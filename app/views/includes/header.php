@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/jazz.css' ?>">
+    <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/cart.css' ?>">
+    
+    <title>Document</title>
+</head>
+<body>
+    <section class = "container">
+            <header>
+                <nav>
+                    <section class="nav-bg"></section>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                        <a href="./homepage.php"><img src="/icons/logo.png" alt="logo" class="icon"></a> </li>
+                        <li class="nav-item"><a href="#">Home</a></a></li>
+                        <li class="nav-item"><a href="<?php echo URLROOT; ?>/Pages/index">Jazz</a></li>
+                        <li class="nav-item"><a href="#">Food</a></li>
+                        <li class="nav-item"><a href="#">History</a></li>
+                        <li class="nav-item"><a href="#">CMS</a></li>
+                        <li class="nav-item"><a href="#"><img src="/icons/profile.png" alt="profile-icon" class="icon__profile"></a></li>
+                        <section class="dropdown">
+                            <li class="nav-item"><a><img src = "/icons/shopping-basket.png" alt = "cart-icon" class="icon__cart"></a></li>
+                            <section class="dropdown-content">
+                            <a type="button" href="../view/cartpage.php" class="dropdown-button">View cart</a>
+                            </section>
+                        </section> 
+                        <!-- <script src="../js/cart-animation.js"></script>  -->
+
+                    </ul>
+                </nav>
+            </header>
+        </section>
+</body>
+</html>
