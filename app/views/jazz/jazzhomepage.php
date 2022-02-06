@@ -58,7 +58,6 @@
                     <!-- 
                     <a href="#popup1" type="button" class="button">Info</a>
                     <a id="add-animation"><img src="../icons/ex.png"></a>
-                    <span></span>
                     <span id="counter">1</span> -->
                 </section>
                 <section class="container-artists">
