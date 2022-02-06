@@ -2,17 +2,23 @@
 class JazzController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->JazzModel = $this->model('JazzModel');
-    // }
-
-    public function getJazzTickets()
+    public function __construct()
     {
-        $data1 = $this->JazzModel->getAllJazzTickets();
-        //$data = array($tickets);
-        $this->view('jazz/jazztickets', $data1);
+        $this->JazzModel = $this->model('JazzModel');
     }
+    public function index()
+    {
+        $topArtists = $this->JazzModel->getTopArtists();
+        $data = array($topArtists);
+        $this->view('jazz/jazzhomepage', $data);
+    }
+
+    public function jazztickets()
+    {
+        $data = $this->JazzModel->getAllJazzTickets();
+        $this->view('jazz/jazztickets', $data);
+    }
+
 
 
 

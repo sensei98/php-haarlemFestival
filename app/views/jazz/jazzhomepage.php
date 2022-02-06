@@ -9,7 +9,7 @@
             <h1>&#8223;Jazz washes away the dust of everyday life&#8221;</h1>
         </section>
         <section class="innersection">
-            <a href="<?php echo URLROOT; ?>/jazz/jazztickets/" class="innersection-button"><span>Tickets</span></a>
+            <a href="<?php echo URLROOT; ?>jazz/jazztickets/" class="innersection-button"><span>Tickets</span></a>
         </section>
         <section class="content-wrapper">
             <h1>Welcome to the haarlem jazz festival</h1>

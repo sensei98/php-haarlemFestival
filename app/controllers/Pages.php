@@ -11,10 +11,15 @@ class Pages extends Controller
     {
         $topArtists = $this->JazzModel->getTopArtists();
         $data = array($topArtists);
-
         $this->view('jazz/jazzhomepage', $data);
     }
 
+    public function tickets()
+    {
+        $topArtists = $this->JazzModel->getAllJazzTickets();
+        $data = array($topArtists);
+        $this->view('jazz/jazztickets');
+    }
 
 
     // public function index(){
