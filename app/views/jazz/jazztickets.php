@@ -75,13 +75,10 @@ if (!isset($_SESSION)) {
 
                                         <section class="tickets-buttons">
 
-                                            <!-- <input class="button1" name = "add" type="submit" value ="Add to cart" 
-                                                     onclick="location.href='<?php //echo URLROOT; 
-                                                                                ?>/cartController/cart?=<?php // echo $row->ID 
-                                                                                                        ?>'">  -->
-                                            <!-- <button id="cartPage" name="action" type="submit" value="cartPage">cart test</button> -->
-                                            <label>Quantity&colon;</label>
-                                            <input class="inputfield" type="text" name="quantity" value=1>
+                                            <input class="button1" name="add" type="submit" value="Add to cart" onclick="location.href='<?php echo URLROOT; ?>/cartController/cart?=<?php echo $row->ID ?>'">
+                                            <!-- <button id="cartPage" name="action" type="submit" value="cartPage">cart test</button>
+                                            <label>Quantity&colon;</label> -->
+                                            <!-- <input class="inputfield" type="text" name="quantity" value=1> -->
 
                                         </section>
                                     </form>
