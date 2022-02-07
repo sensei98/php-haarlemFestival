@@ -15,7 +15,8 @@ class JazzController extends Controller
 
     public function jazztickets()
     {
-        $data = $this->JazzModel->getAllJazzTickets();
+        $jazzTickets = $this->JazzModel->getAllJazzTickets();
+        $data = array($jazzTickets);
         $this->view('jazz/jazztickets', $data);
     }
 

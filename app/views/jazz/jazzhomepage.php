@@ -24,7 +24,6 @@
 
         <?php
         foreach ($data as $row) :
-
             foreach ($row as $key => $value) :
         ?>
 
