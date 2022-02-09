@@ -1,14 +1,17 @@
+<header>
+    <?php require APPROOT . '/views/includes/header.php'; ?>
+</header>
 <?php
+
 if (!empty($_SESSION['shopping_cart'])) {
     $total = 0;
 
 
     foreach ($_SESSION['shopping_cart'] as $key => $value) :
+        var_dump($_SESSION['shopping_cart']);
 ?>
 
-        <header>
-            <?php require APPROOT . '/views/includes/header.php'; ?>
-        </header>
+
 
         <section class="container">
             <section class="content-container">
