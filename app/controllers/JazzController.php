@@ -20,16 +20,13 @@ class JazzController extends Controller
         $this->view('jazz/jazztickets', $data);
     }
 
-
-
-
-    // public function getJazzArtistsByID($id)
-    // {
-    //     $ticket = $this->JazzModel->getJazzArtistsByID($id);
-    //     $data = array($ticket);
-
-    //     $this->view('jazz/jazztickets', $data);
-    // }
+    public function getJazzArtistsByID($id)
+    {
+        $ticket = $this->JazzModel->getJazzArtistsByID($id);
+        $data = array($ticket);
+        //$this->view('cart/cartpage', $data);
+        return $data;
+    }
 
 
 

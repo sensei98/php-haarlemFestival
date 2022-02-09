@@ -2,24 +2,24 @@
 class Pages extends Controller
 {
 
-    public function __construct()
-    {
-        $this->JazzModel = $this->model('JazzModel');
-    }
+    // public function __construct()
+    // {
+    //     $this->JazzModel = $this->model('JazzModel');
+    // }
 
-    public function index()
-    {
-        $topArtists = $this->JazzModel->getTopArtists();
-        $data = array($topArtists);
-        $this->view('jazz/jazzhomepage', $data);
-    }
+    // public function index()
+    // {
+    //     $topArtists = $this->JazzModel->getTopArtists();
+    //     $data = array($topArtists);
+    //     $this->view('jazz/jazzhomepage', $data);
+    // }
 
-    public function tickets()
-    {
-        $topArtists = $this->JazzModel->getAllJazzTickets();
-        $data = array($topArtists);
-        $this->view('jazz/jazztickets');
-    }
+    // public function tickets()
+    // {
+    //     $topArtists = $this->JazzModel->getAllJazzTickets();
+    //     $data = array($topArtists);
+    //     $this->view('jazz/jazztickets');
+    // }
 
 
     // public function index(){

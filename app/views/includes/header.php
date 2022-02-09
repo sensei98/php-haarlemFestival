@@ -18,7 +18,7 @@
                 <section class="nav-bg"></section>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="./homepage.php"><img src="<?php echo URLROOT . 'public/img/icons/logo.png' ?>" alt="logo" class="icon"></a>
+                        <a href="#"><img src="<?php echo URLROOT . 'public/img/icons/logo.png' ?>" alt="logo" class="icon"></a>
                     </li>
                     <li class="nav-item"><a href="<?php echo URLROOT; ?>#">Home</a></a></li>
                     <li class="nav-item"><a href="<?php echo URLROOT; ?>jazz/jazzhomepage">Jazz</a></li>
@@ -29,6 +29,7 @@
                     <section class="dropdown">
                         <li class="nav-item"><a><img src="<?php echo URLROOT . 'public/img/icons/shopping-basket.png' ?>" alt="cart-icon" class="icon__cart"></a></li>
                         <section class="dropdown-content">
+                            <!-- fix this -->
                             <a href="<?php echo URLROOT; ?>cart/cartpage" class="dropdown-button">View cart</a>
                         </section>
                     </section>

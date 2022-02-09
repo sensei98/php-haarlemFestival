@@ -1,5 +1,4 @@
 <?php
-
 class JazzModel
 {
     private $db;
@@ -18,7 +17,6 @@ class JazzModel
     {
         $this->db->query("SELECT * FROM tickets WHERE ID = :id");
         $this->db->bind(':id', $id);
-
         $row = $this->db->single();
         return $row;
     }

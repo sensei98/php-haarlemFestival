@@ -54,7 +54,7 @@ if (!isset($_SESSION)) {
                                     </span>
 
                                     <!-- should point to the shopping cart -->
-                                    <form method="POST" action="<?php echo URLROOT; ?>/cartController/cart/<?php echo $row[$i]->ID ?>">
+                                    <form method="POST" action="<?php echo URLROOT; ?>/cartController/addTocart/<?php echo $row[$i]->ID ?>">
                                         <section class="flex-column">
                                             <span name="" class="artist-name"><?php echo $row[$i]->artistname; ?></span>
                                             <?php
@@ -75,10 +75,10 @@ if (!isset($_SESSION)) {
 
                                         <section class="tickets-buttons">
 
-                                            <input class="button1" name="add" type="submit" value="Add to cart" onclick="location.href='<?php echo URLROOT; ?>/cartController/cart?=<?php echo $row->ID ?>'">
+                                            <input class="button1" name="add" type="submit" value="Add to cart" onclick="location.href='<?php echo URLROOT; ?>/cart/cartpage?=<?php echo $row[$i]->ID ?>'">
                                             <!-- <button id="cartPage" name="action" type="submit" value="cartPage">cart test</button>
                                             <label>Quantity&colon;</label> -->
-                                            <!-- <input class="inputfield" type="text" name="quantity" value=1> -->
+                                            <input class="inputfield" type="text" name="quantity" value=1>
 
                                         </section>
                                     </form>

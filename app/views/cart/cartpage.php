@@ -1,5 +1,4 @@
 <?php
-
 if (!empty($_SESSION['shopping_cart'])) {
     $total = 0;
 
@@ -7,9 +6,9 @@ if (!empty($_SESSION['shopping_cart'])) {
     foreach ($_SESSION['shopping_cart'] as $key => $value) :
 ?>
 
-        <head>
+        <header>
             <?php require APPROOT . '/views/includes/header.php'; ?>
-        </head>
+        </header>
 
         <section class="container">
             <section class="content-container">
