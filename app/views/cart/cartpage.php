@@ -1,6 +1,27 @@
 <header>
     <?php require APPROOT . '/views/includes/header.php'; ?>
 </header>
+
+
+<section class="progressbar-container">
+    <ul class="progressbar">
+        <li class="active">
+            <a href="../view/cartpage.php">shopping basket</a>
+        </li>
+        <li class="#">
+            <a href="#">delivery</a>
+        </li>
+        <li class="#">
+            <a href="#">payment</a>
+        </li>
+        <li class="#">
+            <a href="#">confirmation</a>
+        </li>
+    </ul>
+</section>
+<section class="content-heading">
+    <h2>shopping basket</h2>
+</section>
 <?php
 
 if (!empty($_SESSION['shopping_cart'])) {
@@ -10,9 +31,6 @@ if (!empty($_SESSION['shopping_cart'])) {
     foreach ($_SESSION['shopping_cart'] as $key => $value) :
         var_dump($_SESSION['shopping_cart']);
 ?>
-
-
-
         <section class="container">
             <section class="content-container">
 
