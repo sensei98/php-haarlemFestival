@@ -55,6 +55,7 @@ if (!isset($_SESSION)) {
 
                                     <!-- should point to the shopping cart -->
                                     <form method="POST" action="<?php echo URLROOT; ?>/cartController/addTocart/<?php echo $row[$i]->ID ?>">
+                                        <?php var_dump($row[$i]->ID) ?>
                                         <section class="flex-column">
                                             <span name="" class="artist-name"><?php echo $row[$i]->artistname; ?></span>
                                             <?php

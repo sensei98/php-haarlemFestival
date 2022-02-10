@@ -28,8 +28,8 @@ if (!empty($_SESSION['shopping_cart'])) {
     $total = 0;
 
 
-    foreach ($_SESSION['shopping_cart'] as $key => $value) :
-        var_dump($_SESSION['shopping_cart']);
+    foreach ($_SESSION['shopping_cart'] as $value) :
+        var_dump($value);
 ?>
         <section class="container">
             <section class="content-container">

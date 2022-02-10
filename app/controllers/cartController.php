@@ -17,18 +17,25 @@ class cartController extends Controller
         } else {
             $_SESSION['shopping_cart'][0] = $data;
         }
+        //var_dump(isset($_SESSION['shopping_cart']['item_name']));
+        // print_r($_SESSION);
     }
 
     //needs fixing
     public function getJazzTicket($id)
     {
         $tickets = $this->JazzModel->getJazzArtistsByID($id);
-        $data = [];
-        foreach ($tickets as $row) {
-            $price = $row['price'];
-            $name = $row['name'];
-        }
+        var_dump($id);
+        $price = $tickets['price'];
+        $name = $tickets['name'];
+        // $data = [];
+        // foreach ($tickets as $row) {
+        //     $price = $row['price'];
+        //     $name = $row['name'];
+        // }
         $data = array("ticketID" => $id, "item_name" => $name, "item_price" => $price, "item_quantity" => $_POST['quantity']);
+
+        var_dump($_GET['id']);
         return $data;
     }
 
@@ -36,8 +43,9 @@ class cartController extends Controller
     public function addTocart()
     {
         if (isset($_POST['add'])) {
-            $tickets = $this->getJazzTicket($_GET['id']);
+            $tickets = $this->getJazzTicket($_GET['ID']);
             $data = $this->createShoppingCart($tickets);
+            var_dump($tickets);
         }
         $this->view('cart/cartpage', $data);
     }

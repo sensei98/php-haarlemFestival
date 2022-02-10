@@ -1,11 +1,14 @@
 <?php
-class User {
+class User
+{
     private $db;
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Database::getInstance();
     }
 
-    public function register($data) {
+    public function register($data)
+    {
         $this->db->query('INSERT INTO users (username, email, creation_time, password_hash, privilege_level) VALUES(:username, :email, now(), :password, 0)');
 
         //Bind values
@@ -24,7 +27,8 @@ class User {
 
 
     //Find user by email. Email is passed in by the Controller.
-    public function findUserByEmail($email) {
+    public function findUserByEmail($email)
+    {
         //Prepared statement
         $this->db->query('SELECT * FROM users WHERE email = :email');
 
@@ -32,7 +36,7 @@ class User {
         $this->db->bind(':email', $email);
 
         //Check if email is already registered
-        if($this->db->rowCount() > 0) {
+        if ($this->db->rowCount() > 0) {
             return true;
         } else {
             return false;
@@ -40,23 +44,24 @@ class User {
     }
 
     //Find user id by username. Email is passed in by the Controller.
-    public function findUserIdByUsername($username) {
+    public function findUserIdByUsername($username)
+    {
         //Prepared statement
         $this->db->query('SELECT * FROM users WHERE username = :username');
 
         //Email param will be bound with the username variable
         $this->db->bind(':username', $username);
-        
+
         $row = $this->db->single();
-        if(isset($row->user_id)){
+        if (isset($row->user_id)) {
             return $row->user_id;
-        }
-        else{
+        } else {
             return null;
         }
     }
 
-    public function getLogs($user_id, $privilege_level){
+    public function getLogs($user_id, $privilege_level)
+    {
         $this->db->query('SELECT l.log_id, u.username, e.name, l.time, l.event_log FROM logs l inner join event_types e on l.type_id = e.type_id inner JOIN users u on l.user_id = u.user_id inner join privileges p on u.privilege_level = p.privilege_level WHERE l.user_id = :user_id OR l.user_id in (SELECT user_id FROM users where privilege_level < :privilege)');
 
         $this->db->bind(':user_id', $user_id);
@@ -66,7 +71,8 @@ class User {
         return $result;
     }
 
-    public function login($username, $password) {
+    public function login($username, $password)
+    {
         $this->db->query('SELECT * FROM users WHERE username = :username');
 
         //Bind value
@@ -83,7 +89,8 @@ class User {
     }
 
     //Adds log to database table
-    public function dbLog($username, $type_id, $log_detail = "") {
+    public function dbLog($username, $type_id, $log_detail = "")
+    {
 
         $user_id = $this->findUserIdByUsername($username);
         $this->db->query('INSERT INTO logs (user_id, type_id, time, event_log) VALUES(:user_id, :type, now(), :detail)');

@@ -15,10 +15,29 @@ class JazzModel
     }
     public function getJazzArtistsByID($id)
     {
-        $this->db->query("SELECT * FROM tickets WHERE ID = :id");
+        $this->db->query("SELECT * FROM tickets WHERE id = :id ");
         $this->db->bind(':id', $id);
         $row = $this->db->single();
+        var_dump($this->db);
+        var_dump($id);
         return $row;
+        //var_dump($row);
+        // $row = $this->db->single();
+        // if ($this->db->rowCount() > 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+        // return $row;
+        // if($this->db->rowCount() > 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+        // if ($this->db->execute()) {
+        //     return true;
+        // }
+        // return false;
     }
 
     public function getAllJazzTickets()
