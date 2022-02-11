@@ -29,7 +29,7 @@ if (!empty($_SESSION['shopping_cart'])) {
 
 
     foreach ($_SESSION['shopping_cart'] as $value) :
-        var_dump($value);
+        var_dump($_SESSION['shopping_cart']);
 ?>
         <section class="container">
             <section class="content-container">
@@ -39,7 +39,7 @@ if (!empty($_SESSION['shopping_cart'])) {
                         <!-- <input type="hidden" name="name" value="hidden"> -->
                         <span><?php echo $value['item_name']; ?></span>
                     </article>
-                    <form method="post" action="../view/cartpage.php">
+                    <form method="post" action="<?php echo URLROOT; ?>cartController/RemoveFromCart/<?php echo $value['ticketID'] ?>">
                         <article>
                             <input type="hidden" value="<?php echo $value['ticketID']; ?>">
                             <input type="hidden" name="action" value="delete">
@@ -66,6 +66,7 @@ if (!empty($_SESSION['shopping_cart'])) {
                 <article class="total-price">&euro;<?php echo $_SESSION['totalprice']; ?></article>
             </section>
         <?php endforeach; ?>
+
     <?php } else {
     echo ("<section class='emptyLabel'>Shopping cart is empty</section>");
     echo ("<section class='btn-continue-container'><a class='btn-continue' href='<?php echo URLROOT; ?>/JazzController/getJazzTickets'>Continue shopping?</a></section>"); //href to tickets page fix

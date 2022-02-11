@@ -5,37 +5,32 @@ class cartController extends Controller
     public function __construct()
     {
         $this->JazzModel = $this->model('JazzModel');
-        //historymodel
-        //foodmodel
     }
 
-    public function createShoppingCart($data)
+    public function initShoppingCart($id)
     {
         if (isset($_SESSION['shopping_cart'])) {
-            $count = count($_SESSION['shopping_cart']);
-            $_SESSION['shopping_cart'][$count] = $data;
+            $item_array_ID = array_column($_SESSION['shopping_cart'], "ticketID");
+            if (!in_array($id, $item_array_ID)) {
+                $count = count($_SESSION['shopping_cart']);
+                $data = $this->getAllTicketsToCart($id);
+                $_SESSION['shopping_cart'][$count] = $data;
+            } else {
+                echo '<script>alert("Item has already been added")</script>';
+                //redirect to jazzticket page
+            }
         } else {
+            $data = $this->getAllTicketsToCart($id);
             $_SESSION['shopping_cart'][0] = $data;
         }
-        //var_dump(isset($_SESSION['shopping_cart']['item_name']));
-        // print_r($_SESSION);
     }
 
-    //needs fixing
-    public function getJazzTicket($id)
-    {
-        $tickets = $this->JazzModel->getJazzArtistsByID($id);
-        var_dump($id);
-        $price = $tickets['price'];
-        $name = $tickets['name'];
-        // $data = [];
-        // foreach ($tickets as $row) {
-        //     $price = $row['price'];
-        //     $name = $row['name'];
-        // }
-        $data = array("ticketID" => $id, "item_name" => $name, "item_price" => $price, "item_quantity" => $_POST['quantity']);
 
-        var_dump($_GET['id']);
+    public function getAllTicketsToCart($id)
+    {
+        $price = $_POST['hidden_price'];
+        $name = $_POST['hidden_name'];
+        $data = array("ticketID" => $id, "item_name" => $name, "item_price" => $price, "item_quantity" => $_POST['quantity']);
         return $data;
     }
 
@@ -43,45 +38,22 @@ class cartController extends Controller
     public function addTocart()
     {
         if (isset($_POST['add'])) {
-            $tickets = $this->getJazzTicket($_GET['ID']);
-            $data = $this->createShoppingCart($tickets);
-            var_dump($tickets);
+            $data = $this->initShoppingCart($_POST['hidden_ID']);
         }
         $this->view('cart/cartpage', $data);
     }
 
-
-
-
-
-
-
-
-
-    public function getFoodTicket($id)
-    {
-        //...
-    }
-    public function getHistoryTicket($id)
-    {
-        //...
-
-    }
-
+    //needs fixing
     public function RemoveFromCart()
-    { //needs to be fixed
-
+    {
         if (isset($_POST['action']) && $_POST['action'] == "delete") {
-            foreach ($_SESSION['shopping_cart'] as $keys => $value) {
-                // if($_POST['idItem'] == $value["idItem"])
-                // {
-                unset($_SESSION['shopping_cart'][$value]); //$keys   
-
-                echo "item has been deleted";  //testing
-                // }
+            foreach ($_SESSION['shopping_cart'] as $keys => $values) {
+                if ($values["ticketID"] == $_POST['hidden_ID']) {
+                    unset($_SESSION['shopping_cart'][$keys]); //$keys   
+                    echo '<script>alert("Item has been deleted")</script>';
+                    //redirect to cart page
+                }
             }
-
-            // header('location: ../view/cartpage.php');
         }
     }
 }
