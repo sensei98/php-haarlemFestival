@@ -42,8 +42,9 @@ if (!empty($_SESSION['shopping_cart'])) {
                     <form method="post" action="<?php echo URLROOT; ?>cartController/RemoveFromCart/<?php echo $value['ticketID'] ?>">
                         <article>
                             <input type="hidden" value="<?php echo $value['ticketID']; ?>">
-                            <input type="hidden" name="action" value="delete">
-                            <button type="submit">delete</button>
+                            <!-- <input type="hidden" name="action" value="delete"> -->
+                            <button name="delete" type="submit">delete</button>
+                            <!-- <button type="submit" onclick="location.href='<?php echo URLROOT; ?>/cart/cartpage?=<?php echo $value['ticketID'] ?>'">delete</button> -->
                             <!-- <a href="../view/cartpage.php?id=<?php //echo $value['ticketID']; 
                                                                     ?>"> 
                         <img class="delete-icon"src="../../jazz/icons/delete.png" alt="delete button">
@@ -67,8 +68,8 @@ if (!empty($_SESSION['shopping_cart'])) {
         </section>
 
 
-    <?php } else {
-    echo ("<section class='emptyLabel'>Shopping cart is empty</section>");
-    echo ("<section class='btn-continue-container'><a class='btn-continue' href='<?php echo URLROOT; ?>/JazzController/getJazzTickets'>Continue shopping?</a></section>"); //href to tickets page fix
-}
+    <?php } else { ?>
+        <section class='emptyLabel'>Shopping cart is empty</section>
+        <section class='btn-continue-container'><a class='btn-continue' href='<?php echo URLROOT; ?>jazz/jazztickets'>Continue shopping?</a></section>
+    <?php }
     ?>

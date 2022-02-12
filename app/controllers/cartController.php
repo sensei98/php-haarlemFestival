@@ -52,6 +52,7 @@ class cartController extends Controller
                     unset($_SESSION['shopping_cart'][$keys]); //$keys   
                     echo '<script>alert("Item has been deleted")</script>';
                     //redirect to cart page
+                    $this->view('cart/cartpage');
                 }
             }
         }
