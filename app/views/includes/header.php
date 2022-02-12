@@ -30,7 +30,7 @@
                         <li class="nav-item"><a><img src="<?php echo URLROOT . 'public/img/icons/shopping-basket.png' ?>" alt="cart-icon" class="icon__cart"></a></li>
                         <section class="dropdown-content">
                             <!-- fix this -->
-                            <a href="<?php echo URLROOT; ?>cart/cartpage" class="dropdown-button">View cart</a>
+                            <a href="<?php echo URLROOT; ?>cartController/addTocart" class="dropdown-button">View cart</a>
                         </section>
                     </section>
                     <!-- <script src="../js/cart-animation.js"></script>  -->

@@ -6,7 +6,7 @@
 <section class="progressbar-container">
     <ul class="progressbar">
         <li class="active">
-            <a href="../view/cartpage.php">shopping basket</a>
+            <a href="<?php echo URLROOT; ?>cartController/addTocart">shopping basket</a>
         </li>
         <li class="#">
             <a href="#">delivery</a>
