@@ -29,7 +29,7 @@ if (!empty($_SESSION['shopping_cart'])) {
 
 
     foreach ($_SESSION['shopping_cart'] as $value) :
-        var_dump($_SESSION['shopping_cart']);
+        // var_dump($_SESSION['shopping_cart']);
 ?>
         <section class="container">
             <section class="content-container">
@@ -60,12 +60,12 @@ if (!empty($_SESSION['shopping_cart'])) {
             $total = $total + ($value['item_quantity'] * $value['item_price']);
             $_SESSION['totalprice'] = $total;
             ?>
-
-            <section class="bottom-section">
-                <article class="total-label">total</article>
-                <article class="total-price">&euro;<?php echo $_SESSION['totalprice']; ?></article>
-            </section>
         <?php endforeach; ?>
+        <section class="bottom-section">
+            <article class="total-label">total</article>
+            <article class="total-price">&euro;<?php echo $_SESSION['totalprice']; ?></article>
+        </section>
+
 
     <?php } else {
     echo ("<section class='emptyLabel'>Shopping cart is empty</section>");

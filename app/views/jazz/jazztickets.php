@@ -55,7 +55,7 @@ if (!isset($_SESSION)) {
 
                                     <!-- should point to the shopping cart -->
                                     <form method="POST" action="<?php echo URLROOT; ?>cartController/addTocart/<?php echo $row[$i]->ID ?>">
-                                        <?php var_dump($row[$i]->ID) ?>
+
                                         <section class="flex-column">
                                             <span name="" class="artist-name"><?php echo $row[$i]->artistname; ?></span>
                                             <?php
@@ -79,7 +79,7 @@ if (!isset($_SESSION)) {
                                             <input type="hidden" name="hidden_name" value="<?php echo $row[$i]->artistname; ?>" />
                                             <input type="hidden" name="hidden_price" value="<?php echo $row[$i]->price ?>" />
                                             <input type="hidden" name="hidden_ID" value="<?php echo $row[$i]->ID ?>" />
-                                            <input class="button1" name="add" type="submit" value="<?php echo $row[$i]->ID ?>" onclick="location.href='<?php echo URLROOT; ?>/cart/cartpage?=<?php echo $row[$i]->ID ?>'">
+                                            <input class="button1" name="add" type="submit" value="Add to cart" onclick="location.href='<?php echo URLROOT; ?>/cart/cartpage?=<?php echo $row[$i]->ID ?>'">
                                             <!-- <button id="cartPage" name="action" type="submit" value="cartPage">cart test</button>
                                             <label>Quantity&colon;</label> -->
                                             <input class="inputfield" type="text" name="quantity" value=1>
