@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="511fb92e-d2ad-4a76-8aea-3ef82d797b60" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectId" id="1pc1Gt1BCiHzR2D1VUMFdPckmpy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public/js" />
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/includes" />
+      <recent name="$PROJECT_DIR$/app/views" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="511fb92e-d2ad-4a76-8aea-3ef82d797b60" name="Default Changelist" comment="" />
+      <created>1615467472720</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615467472720</updated>
+      <workItem from="1615467474447" duration="3737000" />
+      <workItem from="1615480549189" duration="237000" />
+      <workItem from="1615485193819" duration="4144000" />
+      <workItem from="1615547184798" duration="2217000" />
+      <workItem from="1615634554721" duration="7744000" />
+      <workItem from="1615652738250" duration="4353000" />
+      <workItem from="1615665607689" duration="868000" />
+      <workItem from="1615802739160" duration="492000" />
+      <workItem from="1615892834193" duration="448000" />
+      <workItem from="1615972756694" duration="1215000" />
+      <workItem from="1616322782442" duration="1140000" />
+      <workItem from="1617375226838" duration="504000" />
+      <workItem from="1618058427554" duration="429000" />
+      <workItem from="1618265360179" duration="2426000" />
+      <workItem from="1618344346194" duration="899000" />
+      <workItem from="1618347589603" duration="614000" />
+      <workItem from="1618406600846" duration="5012000" />
+      <workItem from="1618428021092" duration="1879000" />
+      <workItem from="1618483487505" duration="8108000" />
+      <workItem from="1618519025901" duration="7265000" />
+      <workItem from="1618529550609" duration="173000" />
+      <workItem from="1618570889034" duration="3838000" />
+      <workItem from="1618578471422" duration="5243000" />
+      <workItem from="1618597013414" duration="1609000" />
+      <workItem from="1618697738892" duration="3421000" />
+      <workItem from="1618774704722" duration="4661000" />
+      <workItem from="1619177100558" duration="328000" />
+      <workItem from="1619198935337" duration="302000" />
+      <workItem from="1619233025536" duration="469000" />
+      <workItem from="1619434822580" duration="6340000" />
+      <workItem from="1619811281282" duration="5898000" />
+      <workItem from="1619877682636" duration="1292000" />
+      <workItem from="1619894280361" duration="152000" />
+      <workItem from="1619963515982" duration="447000" />
+      <workItem from="1620331421195" duration="2896000" />
+      <workItem from="1620380779110" duration="6565000" />
+      <workItem from="1620471082862" duration="5602000" />
+      <workItem from="1620554440399" duration="4772000" />
+      <workItem from="1620652000295" duration="3250000" />
+      <workItem from="1620677870620" duration="2276000" />
+      <workItem from="1620725758588" duration="959000" />
+      <workItem from="1620734602035" duration="2086000" />
+      <workItem from="1621073748582" duration="84000" />
+      <workItem from="1621278359425" duration="1353000" />
+      <workItem from="1621332159347" duration="1711000" />
+      <workItem from="1621713987207" duration="608000" />
+      <workItem from="1621861260844" duration="149000" />
+      <workItem from="1622582397888" duration="766000" />
+      <workItem from="1623577196084" duration="4021000" />
+      <workItem from="1623603747896" duration="3503000" />
+      <workItem from="1623608531878" duration="2040000" />
+      <workItem from="1623664111393" duration="1486000" />
+      <workItem from="1623668019135" duration="4064000" />
+      <workItem from="1623675465262" duration="2834000" />
+      <workItem from="1623768696112" duration="2144000" />
+      <workItem from="1624534231909" duration="6498000" />
+      <workItem from="1625251691835" duration="14000" />
+      <workItem from="1625254442083" duration="22000" />
+      <workItem from="1629884439126" duration="721000" />
+      <workItem from="1629892558570" duration="100000" />
+      <workItem from="1630334253792" duration="143000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="227" y="42" key="#CLI_Interpreters" timestamp="1619199114443">
+      <screen x="0" y="22" width="1280" height="715" />
+    </state>
+    <state x="227" y="42" key="#CLI_Interpreters/0.22.1280.715@0.22.1280.715" timestamp="1619199114443" />
+    <state x="0" y="211" key="#SQL_Dialects" timestamp="1620382639675">
+      <screen x="0" y="22" width="1280" height="708" />
+    </state>
+    <state x="0" y="211" key="#SQL_Dialects/0.22.1280.708@0.22.1280.708" timestamp="1620382639675" />
+    <state x="240" y="40" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620382657117">
+      <screen x="0" y="22" width="1280" height="708" />
+    </state>
+    <state x="240" y="40" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1280.708@0.22.1280.708" timestamp="1620382657117" />
+    <state x="397" y="128" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1619437975977">
+      <screen x="0" y="22" width="1280" height="706" />
+    </state>
+    <state x="397" y="128" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.22.1280.706@0.22.1280.706" timestamp="1619437975977" />
+    <state x="293" y="109" key="NewPhpClassDialog" timestamp="1619877713921">
+      <screen x="0" y="22" width="1280" height="708" />
+    </state>
+    <state x="293" y="109" key="NewPhpClassDialog/0.22.1280.708@0.22.1280.708" timestamp="1619877713921" />
+    <state x="453" y="298" key="NewPhpFileDialog" timestamp="1624536733781">
+      <screen x="0" y="22" width="1280" height="706" />
+    </state>
+    <state x="453" y="298" key="NewPhpFileDialog/0.22.1280.706@0.22.1280.706" timestamp="1624536733781" />
+    <state x="453" y="299" key="NewPhpFileDialog/0.22.1280.708@0.22.1280.708" timestamp="1619877743864" />
+    <state x="453" y="301" key="NewPhpFileDialog/0.22.1280.713@0.22.1280.713" timestamp="1620477239262" />
+    <state x="141" y="22" width="997" height="717" key="SettingsEditor" timestamp="1624543413263">
+      <screen x="0" y="22" width="1280" height="706" />
+    </state>
+    <state x="141" y="22" width="997" height="706" key="SettingsEditor/0.22.1280.706@0.22.1280.706" timestamp="1624543413263" />
+    <state x="141" y="22" width="997" height="708" key="SettingsEditor/0.22.1280.708@0.22.1280.708" timestamp="1618597026960" />
+    <state x="141" y="22" width="997" height="717" key="SettingsEditor/0.22.1280.715@0.22.1280.715" timestamp="1619199115626" />
+    <state x="326" y="130" width="615" height="490" key="find.popup" timestamp="1624538363839">
+      <screen x="0" y="22" width="1280" height="706" />
+    </state>
+    <state x="326" y="130" width="615" height="490" key="find.popup/0.22.1280.706@0.22.1280.706" timestamp="1624538363839" />
+    <state x="22" y="52" width="670" height="676" key="search.everywhere.popup" timestamp="1624543407700">
+      <screen x="0" y="22" width="1280" height="706" />
+    </state>
+    <state x="22" y="52" width="670" height="676" key="search.everywhere.popup/0.22.1280.706@0.22.1280.706" timestamp="1624543407700" />
+  </component>
+</project>
