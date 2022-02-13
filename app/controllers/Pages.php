@@ -185,7 +185,7 @@ class Pages extends Controller
         if (isset($_POST['add'])) {
             $data = $this->initShoppingCart($_POST['hidden_ID']);
         }
-        $this->view('cart/cartpage', $data);
+        $this->view('pages/cartpage', $data);
     }
 
     //needs fixing
@@ -197,7 +197,7 @@ class Pages extends Controller
                     unset($_SESSION['shopping_cart'][$keys]); //$keys   
                     echo '<script>alert("Item has been deleted")</script>';
                     //redirect to cart page
-                    $this->view('cart/cartpage');
+                    $this->view('pages/cartpage');
                 }
             }
         }

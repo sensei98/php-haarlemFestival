@@ -48,7 +48,15 @@
                         <a class="nav-link" href="<?php echo URLROOT; ?>/pages/food_home">Food</a>
                     </li>
                 </ul>
+                <section class="dropdown">
+                    <li class="nav-item"><a><img src="<?php echo URLROOT . '/public/img/icons/shopping-basket.png' ?>" alt="cart-icon" class="icon__cart"></a></li>
+                    <section class="dropdown-content">
+                        <!-- fix this -->
+                        <a href="<?php echo URLROOT; ?>/Pages/addTocart" class="dropdown-button">View cart</a>
+                    </section>
+                </section>
                 <form class="d-flex">
+
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>

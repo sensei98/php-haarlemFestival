@@ -54,7 +54,7 @@ if (!isset($_SESSION)) {
                                     </span>
 
                                     <!-- should point to the shopping cart -->
-                                    <form method="POST" action="<?php echo URLROOT; ?>cartController/addTocart/<?php echo $row[$i]->ID ?>">
+                                    <form method="POST" action="<?php echo URLROOT; ?>/Pages/addTocart/<?php echo $row[$i]->ID ?>">
 
                                         <section class="flex-column">
                                             <span name="" class="artist-name"><?php echo $row[$i]->artistname; ?></span>

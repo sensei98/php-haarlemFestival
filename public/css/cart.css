@@ -163,13 +163,15 @@ ul{
 .content-heading{
     font-size:20px;
     text-transform: capitalize;
+    font-style: bold;
     margin-left:14rem;
+
 }
 .content-heading:after{
     content: " ";
     display: block;
     border-bottom: 0.9px solid #a4a4a4;
-    width:80rem;
+    width:125rem;
 }
 
 .content-container span{
@@ -181,40 +183,48 @@ ul{
 }
 .basket-item1{
     text-align:center;
+    /* line-height:10px; */
     color:#ffff;
-
+    align-items:'center';
     display:flex;
     flex-direction:column;
-    vertical-align: middle;    
-    margin-top:4rem;
+    /* vertical-align: middle;     */
+    margin-top:2rem;
     width:300px;
-    /* height:100px; */
+
+    height:60px;
     border: 15px solid #0000;
     border-radius: 15px;
     background-color: #8959E5;
     box-shadow: rgb(0 0 0 / 7%) 0px 0px 1px 6px;
-    margin-left:13rem;
+    /* margin-left:10rem; */
 }
 
 .basket-item1:after {
-    content: " ";
+    content: "";
     display: block;
     margin:-39px auto;
     border-bottom: 0.9px solid #a4a4a4;
-    width:80rem;
-    padding:10px auto;
+    width:120rem;
+    padding:15px auto;
 }
-.delete-icon{
+
+.delete-icon img{
     max-width: 35px;
-    float:right;
-    margin-right:45rem;
-    margin-top:-7.9rem;
+    /* margin-right:45rem; */
+    /* margin-top:-7.9rem; */
+    /* display: flex; */
+    /* margin-left:70rem; */
+    
+    /* margin-bottom:10px; */
+    background-color:red;
+    
 }
 .quantity-float{
     float:right;
     font-size:23px;
     margin-right:33rem;
-    margin-top:-7.4rem;
+    margin-top:-10.9rem;
 }
 .dropdown-cart{
     float: right;
@@ -237,7 +247,7 @@ ul{
     font-weight: bold;
     font-size: 20px;
     margin-right:18rem;
-    margin-top:-7.4rem;
+    margin-top:-10.9rem;
 }
 .bottom-section{
     float:right;
