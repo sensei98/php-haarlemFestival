@@ -6,7 +6,7 @@
 <section class="progressbar-container">
     <ul class="progressbar">
         <li class="active">
-            <a href="<?php echo URLROOT; ?>cartController/addTocart">shopping basket</a>
+            <a href="<?php echo URLROOT; ?>/Pages/addTocart">shopping basket</a>
         </li>
         <li class="#">
             <a href="#">delivery</a>
@@ -43,20 +43,26 @@ if (!empty($_SESSION['shopping_cart'])) {
                         <article>
                             <input type="hidden" value="<?php echo $value['ticketID']; ?>">
                             <!-- <input type="hidden" name="action" value="delete"> -->
-                            <button name="delete" type="submit">delete</button>
+                            <!-- <button name="delete" type="submit">delete</button> -->
 
-                            <!-- <button type="submit" onclick="location.href='<?php echo URLROOT; ?>/cart/cartpage?=<?php echo $value['ticketID'] ?>'">delete</button> -->
+                            <a class="delete-icon" href="" name="delete" type="submit">
+                                <img src=<?php echo URLROOT . '/public/img/icons/delete.png' ?>>
+                            </a>
+                            <!-- <button type="submit" onclick="location.href='<?php //echo URLROOT; 
+                                                                                ?>/cart/cartpage?=<?php echo $value['ticketID'] ?>'">delete</button> -->
                             <!-- <a href="../view/cartpage.php?id=<?php //echo $value['ticketID']; 
 
                                                                     ?>"> 
                         <img class="delete-icon"src="../../jazz/icons/delete.png" alt="delete button">
                     </a> -->
+                            <!-- <section class="delete-icon">
+                                <a href="" name="delete" type="submit">
+                                    <img src=<?php //echo URLROOT . '/public/img/icons/delete.png' 
+                                                ?>>
+                                </a>
+                            </section> -->
                         </article>
-                        <section class="delete-icon">
-                            <a href="" name="delete" type="submit">
-                                <img src=<?php echo URLROOT . '/public/img/icons/delete.png' ?>>
-                            </a>
-                        </section>
+
 
                         <article class="quantity-float">Qty&colon; <?php echo $value['item_quantity'] ?></article>
 
@@ -74,6 +80,7 @@ if (!empty($_SESSION['shopping_cart'])) {
             <article class="total-price">&euro;<?php echo $_SESSION['totalprice']; ?></article>
         </section>
         <section class='btn-continue-container'><a class='btn-continue' href='<?php echo URLROOT; ?>/pages/jazztickets'>Continue shopping?</a></section>
+        <section class='btn-continue-order'><a class='btn-order' href='<?php echo URLROOT; ?>/#'>To order</a></section>
 
 
     <?php } else { ?>
