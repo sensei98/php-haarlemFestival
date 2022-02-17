@@ -163,6 +163,7 @@ class Pages extends Controller
             } else {
                 echo '<script>alert("Item has already been added")</script>';
                 //redirect to jazzticket page
+                // redirect('pages/jazztickets');
             }
         } else {
             $data = $this->getAllTicketsToCart($id);
@@ -191,14 +192,15 @@ class Pages extends Controller
     //needs fixing
     public function RemoveFromCart()
     {
-        if (isset($_POST['action']) && $_POST['action'] == "delete") {
+        if (isset($_POST['action'])  == "delete") {
             foreach ($_SESSION['shopping_cart'] as $keys => $values) {
-                if ($values["ticketID"] == $_POST['hidden_ID']) {
+                if ($values["ticketID"] == $_GET['hidden_ID']) {
                     unset($_SESSION['shopping_cart'][$keys]); //$keys   
                     echo '<script>alert("Item has been deleted")</script>';
                     //redirect to cart page
                     $this->view('pages/cartpage');
                 }
+                var_dump($_SESSION['shopping_cart']);
             }
         }
     }

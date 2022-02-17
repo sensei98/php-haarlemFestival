@@ -60,19 +60,25 @@
                     <a href="#popup1" type="button" class="button">Info</a>
                     <a id="add-animation"><img src="../icons/ex.png"></a>
                     <span id="counter">1</span> -->
-                </section>
-                <section class="container-artists">
-                    <section class="box">
-                        <img src=" <?php echo $row['image'] ?> " alt="<?php echo $row['artistname']; ?>">
-                        <span><?php echo $row['artistname']; ?></span>
-                    </section>
-                </section>
+
+                    <!-- <section class="container-artists">
+                        <section class="box">
+                            <img src=" <?php //echo $row['image'] 
+                                        ?> " alt="<?php //echo $row['artistname']; 
+                                                    ?>">
+                            <span><?php //echo $row['artistname']; 
+                                    ?></span>
+                        </section>
+                    </section> -->
 
 
-                <section class="mask"></section>
-                <section class="content">
-                    <h3><?php echo $row['artistname']; ?></h3>
-                    <p><?php echo $row['about'] ?></p>
+                    <!-- <section class="mask"></section>
+                    <section class="content">
+                        <h3><?php //echo $row['artistname']; 
+                            ?></h3>
+                        <p><?php //echo $row['about'] 
+                            ?></p>
+                    </section> -->
                 </section>
                 <!-- 
                 </section> -->

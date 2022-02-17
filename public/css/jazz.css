@@ -826,5 +826,27 @@ li{
 	}
 }
 
+.artists-container{
+    display:flex;
+    /* flex-direction: row; */
+
+    flex-wrap: wrap;
+    /* background-color:red; */
+}
+.artists-container .details h2{
+    font-size:25px;
+   background-color:blue;
+    text-transform: capitalize;
+}
+.artists-container .details p{
+    font-size:13px;
+    background-color:orange;
+}
+
+.artists-container .container__img-list li img{
+    background-color:violet;
+    padding:10px;
+}
+
 
 
