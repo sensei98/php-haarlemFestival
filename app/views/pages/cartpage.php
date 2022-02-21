@@ -49,7 +49,8 @@ if (!empty($_SESSION['shopping_cart'])) {
                                 <img src=<?php echo URLROOT . '/public/img/icons/delete.png' ?>>
                             </a>
                             <!-- <button type="submit" onclick="location.href='<?php //echo URLROOT; 
-                                                                                ?>/cart/cartpage?=<?php echo $value['ticketID'] ?>'">delete</button> -->
+                                                                                ?>/cart/cartpage?=<?php //echo $value['ticketID'] 
+                                                                                                    ?>'">delete</button> -->
                             <!-- <a href="../view/cartpage.php?id=<?php //echo $value['ticketID']; 
 
                                                                     ?>"> 
