@@ -16,7 +16,9 @@ require APPROOT . '/views/includes/food_carousel.php';
     </section>
 
 
-    <?php foreach ($data[0] as $Key => $values) { ?>
+    <?php foreach ($data[0] as $Key => $values) {
+
+    ?>
 
         <section class="jumbotron text-center">
             <section class="container">

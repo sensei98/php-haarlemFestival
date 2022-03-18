@@ -59,6 +59,7 @@ class Pages extends Controller
         $data = array($ticket);
         $this->view('pages/food_tickets', $data);
     }
+
     public function orders()
     {
         $target_dir = "/upload";
@@ -95,35 +96,35 @@ class Pages extends Controller
         }
         $this->view('orders');
     }
-    public function pdf_qrCode()
-    {
-        if (isset($_POST['Generate'])) {
+    // public function pdf_qrCode()
+    // {
+    //     if (isset($_POST['Generate'])) {
 
-            $name = $_POST['email'];
-            $address = $_POST['Address'];
-            $city = $_POST['city'];
-            $zip = $_POST['zip'];
+    //         $name = $_POST['email'];
+    //         $address = $_POST['Address'];
+    //         $city = $_POST['city'];
+    //         $zip = $_POST['zip'];
 
-            $pdf = new FPDF();
-            $pdf->AddPage();
-            $pdf->SetFont('Arial', 'B', 14);
+    //         $pdf = new FPDF();
+    //         $pdf->AddPage();
+    //         $pdf->SetFont('Arial', 'B', 14);
 
-            $pdf->Cell(50, 10, "Firstname: ", 1, 0);
-            $pdf->Cell(140, 10, $name, 1, 1);
+    //         $pdf->Cell(50, 10, "Firstname: ", 1, 0);
+    //         $pdf->Cell(140, 10, $name, 1, 1);
 
-            $pdf->Cell(50, 10, "Address: ", 1, 0);
-            $pdf->Cell(140, 10, $address, 1, 1);
+    //         $pdf->Cell(50, 10, "Address: ", 1, 0);
+    //         $pdf->Cell(140, 10, $address, 1, 1);
 
-            $pdf->Cell(50, 10, "City: ", 1, 0);
-            $pdf->Cell(140, 10, $city, 1, 1);
+    //         $pdf->Cell(50, 10, "City: ", 1, 0);
+    //         $pdf->Cell(140, 10, $city, 1, 1);
 
-            $pdf->Cell(50, 10, "Zip Code: ", 1, 0);
-            $pdf->Cell(140, 10, $zip, 1, 1);
+    //         $pdf->Cell(50, 10, "Zip Code: ", 1, 0);
+    //         $pdf->Cell(140, 10, $zip, 1, 1);
 
-            $pdf->Output();
-        }
-        $this->view('pdf_qrCode');
-    }
+    //         $pdf->Output();
+    //     }
+    //     $this->view('pdf_qrCode');
+    // }
     #-----------------------SAMUEL ADDED THIS-------------
     public function jazzhomepage()
     {
@@ -152,6 +153,7 @@ class Pages extends Controller
     #-----------------------SAMUEL ADDED THIS-------------
 
     #-----------------------SAMUEL ADDED THIS(CART)-------------
+    #initializing shopping cart
     public function initShoppingCart($id)
     {
         if (isset($_SESSION['shopping_cart'])) {
@@ -162,8 +164,6 @@ class Pages extends Controller
                 $_SESSION['shopping_cart'][$count] = $data;
             } else {
                 echo '<script>alert("Item has already been added")</script>';
-                //redirect to jazzticket page
-                // redirect('pages/jazztickets');
             }
         } else {
             $data = $this->getAllTicketsToCart($id);
@@ -171,7 +171,7 @@ class Pages extends Controller
         }
     }
 
-
+    #getting jazz tickets by id to be added to cart
     public function getAllTicketsToCart($id)
     {
         $price = $_POST['hidden_price'];
@@ -180,7 +180,7 @@ class Pages extends Controller
         return $data;
     }
 
-
+    #function for add to cart
     public function addTocart()
     {
         if (isset($_POST['add'])) {
@@ -189,20 +189,18 @@ class Pages extends Controller
         $this->view('pages/cartpage', $data);
     }
 
-    //needs fixing
+    #function for removing cart
     public function RemoveFromCart()
     {
-        if (isset($_POST['action'])  == "delete") {
+        if (isset($_POST['delete'])) {
             foreach ($_SESSION['shopping_cart'] as $keys => $values) {
-                if ($values["ticketID"] == $_GET['hidden_ID']) {
+                if ($values["ticketID"] == $_POST['delete']) {
                     unset($_SESSION['shopping_cart'][$keys]); //$keys   
                     echo '<script>alert("Item has been deleted")</script>';
-                    //redirect to cart page
+                    //     //redirect to cart page
                     $this->view('pages/cartpage');
                 }
-                var_dump($_SESSION['shopping_cart']);
             }
         }
     }
-    #-----------------------SAMUEL ADDED THIS(CART)-------------
 }

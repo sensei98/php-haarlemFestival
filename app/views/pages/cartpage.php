@@ -29,46 +29,28 @@ if (!empty($_SESSION['shopping_cart'])) {
 
 
     foreach ($_SESSION['shopping_cart'] as $value) :
-        // var_dump($_SESSION['shopping_cart']);
+        var_dump($_POST['name'] == 'name_delete');
 ?>
         <section class="container">
             <section class="content-container">
 
                 <section class="basket-container">
                     <article class="basket-item1">
-                        <!-- <input type="hidden" name="name" value="hidden"> -->
+
                         <span><?php echo $value['item_name']; ?></span>
                     </article>
                     <form method="post" action="<?php echo URLROOT; ?>/cartController/RemoveFromCart/<?php echo $value['ticketID'] ?>">
-                        <article>
-                            <input type="hidden" value="<?php echo $value['ticketID']; ?>">
-                            <!-- <input type="hidden" name="action" value="delete"> -->
-                            <!-- <button name="delete" type="submit">delete</button> -->
-
-                            <a class="delete-icon" href="" name="delete" type="submit">
+                        <button name="delete" value="<?php echo $value['ticketID'] ?>">
+                            <a class="delete-icon">
                                 <img src=<?php echo URLROOT . '/public/img/icons/delete.png' ?>>
                             </a>
-                            <!-- <button type="submit" onclick="location.href='<?php //echo URLROOT; 
-                                                                                ?>/cart/cartpage?=<?php //echo $value['ticketID'] 
-                                                                                                    ?>'">delete</button> -->
-                            <!-- <a href="../view/cartpage.php?id=<?php //echo $value['ticketID']; 
+                        </button>
 
-                                                                    ?>"> 
-                        <img class="delete-icon"src="../../jazz/icons/delete.png" alt="delete button">
-                    </a> -->
-                            <!-- <section class="delete-icon">
-                                <a href="" name="delete" type="submit">
-                                    <img src=<?php //echo URLROOT . '/public/img/icons/delete.png' 
-                                                ?>>
-                                </a>
-                            </section> -->
-                        </article>
-
-
-                        <article class="quantity-float">Qty&colon; <?php echo $value['item_quantity'] ?></article>
-
-                        <article class="item-price">&euro;<?php echo $value['item_quantity'] * $value['item_price']; ?></article>
                     </form>
+                    <article class="quantity-float">Qty&colon; <?php echo $value['item_quantity'] ?></article>
+
+                    <article class="item-price">&euro;<?php echo $value['item_quantity'] * $value['item_price']; ?></article>
+
                 </section>
             </section>
             <?php
