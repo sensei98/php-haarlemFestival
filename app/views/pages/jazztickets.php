@@ -28,8 +28,7 @@ if (!isset($_SESSION)) {
                         <h2><?php if (!empty($row[$i]->location)) {
                                 $row[$i]->location;
                             } ?></h2>
-                        <!--FILTER OR NO FILTER?? -->
-                        <!-- <a type=button class="button-filter">filter dates</a>   -->
+
                     </section>
 
                     <ul class="u-list-item">
