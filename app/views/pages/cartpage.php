@@ -29,7 +29,6 @@ if (!empty($_SESSION['shopping_cart'])) {
 
 
     foreach ($_SESSION['shopping_cart'] as $value) :
-        var_dump($_POST['name'] == 'name_delete');
 ?>
         <section class="container">
             <section class="content-container">
