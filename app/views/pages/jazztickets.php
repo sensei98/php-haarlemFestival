@@ -79,11 +79,7 @@ if (!isset($_SESSION)) {
                                             <input type="hidden" name="hidden_price" value="<?php echo $row[$i]->price ?>" />
                                             <input type="hidden" name="hidden_ID" value="<?php echo $row[$i]->ID ?>" />
                                             <input class="button1" name="add" type="submit" value="Add to cart" onclick="location.href='<?php echo URLROOT; ?>/pages/cartpage?=<?php echo $row[$i]->ID ?>'">
-                                            <!-- <button id="cartPage" name="action" type="submit" value="cartPage">cart test</button>
-                                            <label>Quantity&colon;</label> -->
                                             <input class="inputfield" type="text" name="quantity" value=1>
-
-
                                         </section>
                                     </form>
 
