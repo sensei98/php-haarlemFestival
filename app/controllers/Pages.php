@@ -144,7 +144,6 @@ class Pages extends Controller
     {
         $ticket = $this->JazzModel->getJazzArtistsByID($id);
         $data = array($ticket);
-        //$this->view('cart/cartpage', $data);
         return $data;
     }
 
