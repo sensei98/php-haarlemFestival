@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/CMS.css">
     <!-- for jazz  -->
     <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/jazz.css' ?>">
+    <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/homepage.css' ?>">
     <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/cart.css' ?>">
     <!-- for jazz  -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

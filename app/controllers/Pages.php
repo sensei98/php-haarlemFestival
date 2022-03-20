@@ -17,7 +17,7 @@ class Pages extends Controller
         $restaurant = $this->restaurantModel->getAllRestaurant();
         $restaurant_type = $this->restaurantModel->getAllType();
         $data = array($restaurant, $restaurant_type);
-        $this->view('pages/food_home', $data);
+        $this->view('pages/homepage', $data);
 
         /*$data = [
             'title' => 'Home page'
