@@ -90,7 +90,7 @@ include APPROOT . '/views/includes/head.php';
                 <span>Busy Week?</span>
             </section>
             <section id="Weve_go_you_covered">
-                <span>We've go you covered!</span>
+                <span>We've got you covered!</span>
             </section>
             <section id="Optimize_your_time_with_a_pers">
                 <span>Optimize your time with a personalized programme</span>
@@ -145,14 +145,14 @@ include APPROOT . '/views/includes/head.php';
         </a>
     </section>
     <section id="midDance">
-        <img id="Image_1" src="<?php echo URLROOT; ?>/public/img/Image_1.png" srcset="<?php echo URLROOT; ?>/public/img/Image_1.png 1x, <?php echo URLROOT; ?>/public/img/Image_1@2x.png 2x">
+        <img id="Image_1" src="<?php echo URLROOT; ?>/public/img/brinkman.jpg" srcset="<?php echo URLROOT; ?>/public/img/brinkman.jpg 1x, <?php echo URLROOT; ?>/public/img/brinkman.jpg 2x">
 
         <svg class="recDance">
             <rect id="recDance" rx="0" ry="0" x="0" y="0" width="640" height="302">
             </rect>
         </svg>
         <section id="Time_to_get_wild_with_the_musi">
-            <span>Time to get wild with the music of your favorite DJ. It is possible, this year the Haarlem Festival is organizing several dance performances.</span><br>
+            <span>Visit haarlem and check out the historic sites and places in Haarlem with your family!</span><br>
         </section>
         <a id="dance_Button">
             <svg class="Rectangle_95_cm">
@@ -187,7 +187,7 @@ include APPROOT . '/views/includes/head.php';
         </section>
     </section>
     <section id="midJazz">
-        <img id="Image_2" src="<?php echo URLROOT; ?>/public/img/Image_2.png" srcset="<?php echo URLROOT; ?>/public/img/Image_2.png 1x, <?php echo URLROOT; ?>/public/img/Image_2@2x.png 2x">
+        <img id="Image_2" src="<?php echo URLROOT; ?>/public/uploads/tickets-background2.jpg" srcset="<?php echo URLROOT; ?>/public/uploads/tickets-background2.jpg 1x, <?php echo URLROOT; ?>/public/uploads/tickets-background2.jpg 2x">
 
         <svg class="recJazz">
             <rect id="recJazz" rx="0" ry="0" x="0" y="0" width="640" height="302">
@@ -245,7 +245,7 @@ include APPROOT . '/views/includes/head.php';
             </section>
         </a>
         <section id="Time_to_get_wild_with_the_musi_dd">
-            <span>Time to get wild with the music of your favorite DJ. It is possible, this year the Haarlem Festival is organizing several dance performances.</span><br>
+            <span>Know more about Haarlem with your family! Check out the restaurants and food stops of Haarlem!</span><br>
         </section>
         <section id="foodColorBar">
             <svg class="Rectangle_91_dg">
@@ -273,14 +273,14 @@ include APPROOT . '/views/includes/head.php';
     <section id="Header">
         <section id="Headline_Text">
             <section id="Anniversary_of_The_Historic_Ci">
-                <span>Anniversary of The Historic City of Haarlem!</span><br>
+                <span>With Family And Friends</span><br>
             </section>
             <section id="Group_9">
                 <section id="ID190th_">
-                    <span>190th </span>
+                    <span></span>
                 </section>
                 <section id="Come_Celebrate_The">
-                    <span>Come Celebrate The</span>
+                    <span>Celebrate The Haarlem Festival</span>
                 </section>
             </section>
             <svg class="Rectangle_100_dr">
@@ -308,14 +308,14 @@ include APPROOT . '/views/includes/head.php';
                 </rect>
             </svg>
         </section>
-        <img id="HaarlemCity" src="<?php echo URLROOT; ?>/public/img/HaarlemCity.png" srcset="<?php echo URLROOT; ?>/public/img/HaarlemCity.png 1x, <?php echo URLROOT; ?>/public/img/HaarlemCity@2x.png 2x">
+        <img id="HaarlemCity" src="<?php echo URLROOT; ?>/public/uploads/example.jpg" srcset="<?php echo URLROOT; ?>/public/uploads/example.jpg 1x, <?php echo URLROOT; ?>/public/uploads/example.jpg 2x">
 
         <svg class="Path_40" viewBox="0 0 1920 917">
             <path id="Path_40" d="M 0 0 L 1920 0 L 1920 917 L 0 917 L 0 0 Z">
             </path>
         </svg>
         <section id="Experience_Haarlem">
-            <span>Experience Haarlem</span>
+            <span>The Haarlem Festival</span>
         </section>
     </section>
 
@@ -326,5 +326,5 @@ include APPROOT . '/views/includes/head.php';
 
 </article>
 
-<?php //require APPROOT . '/views/inc/footer.php'; 
+<?php require APPROOT . '/views/includes/footer.php';
 ?>

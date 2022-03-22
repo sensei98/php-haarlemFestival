@@ -1,4 +1,4 @@
-<footer class="text-center" >
+<footer class="text-center">
 
     <!-- Copyright -->
     <section class="text-center text-white p-3">
@@ -8,4 +8,5 @@
     <!-- Copyright -->
 </footer>
 </body>
+
 </html>
