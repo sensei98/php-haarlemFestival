@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../../mollie-api-php/vendor/autoload.php';
+
 class Pages extends Controller
 {
     public function __construct()
@@ -125,7 +127,7 @@ class Pages extends Controller
     //     }
     //     $this->view('pdf_qrCode');
     // }
-    #-----------------------SAMUEL ADDED THIS-------------
+
     public function jazzhomepage()
     {
         $topArtists = $this->JazzModel->getTopArtists();
@@ -149,9 +151,6 @@ class Pages extends Controller
 
 
 
-    #-----------------------SAMUEL ADDED THIS-------------
-
-    #-----------------------SAMUEL ADDED THIS(CART)-------------
     #initializing shopping cart
     public function initShoppingCart($id)
     {
@@ -201,5 +200,43 @@ class Pages extends Controller
                 }
             }
         }
+    }
+    public function contactPage()
+    {
+        $this->view("pages/contactPage");
+    }
+    public function payment() //takes in id
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $mollie = new \Mollie\Api\MollieApiClient();
+            $mollie->setApiKey('test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8');
+            $amount = sprintf("%.2f", $_SESSION['totalprice']);
+            $description = $_SESSION['username'] . ' payment'; // save name to session variable
+            $payment = $mollie->payments->create([
+                "amount" => [
+                    "currency" => "EUR",
+                    "value" => "$amount"
+                ],
+                "description" => "$description",
+                "redirectUrl" => "http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/pages/confirmation",
+                "webhookUrl" => "",
+                // "metadata" => $id
+
+            ]);
+            $_SESSION['payment_id'] = $payment->id;
+            redirectPayment($payment->getCheckoutUrl(), true, 303);
+        }
+    }
+
+    public function paymentStatus()
+    {
+        $mollie = new \Mollie\Api\MollieApiClient();
+        $mollie->setApiKey('test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8');
+        $payment = $mollie->payments->get($_SESSION['payment_id']);
+        // if($payment->isPaid()){
+        //     $this->payOrder();
+        //unset shopping cart
+        // }
+
     }
 }

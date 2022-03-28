@@ -18,4 +18,4 @@ define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', 'http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging');
 
 //Sitename
-define('SITENAME', 'Login & Register script');
+define('SITENAME', 'Haarlem Festival');

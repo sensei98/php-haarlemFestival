@@ -62,7 +62,7 @@ if (!empty($_SESSION['shopping_cart'])) {
             <article class="total-price">&euro;<?php echo $_SESSION['totalprice']; ?></article>
         </section>
         <section class='btn-continue-container'><a class='btn-continue' href='<?php echo URLROOT; ?>/pages/jazztickets'>Continue shopping?</a></section>
-        <section class='btn-continue-order'><a class='btn-order' href='<?php echo URLROOT; ?>/#'>To order</a></section>
+        <section class='btn-continue-order'><a class='btn-order' href='<?php echo URLROOT; ?>/pages/contactPage'>To order</a></section>
 
 
     <?php } else { ?>
