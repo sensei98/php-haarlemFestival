@@ -1,24 +1,15 @@
 <?php
 
 require_once __DIR__ . '/../../mollie-api-php/vendor/autoload.php';
-//require __DIR__ . '/../..//phpmailer/phpmailer/src/SMTP.php';
 require __DIR__ . '/../../phpmailer/src/PHPMailer.php';
 require __DIR__ . '/../../phpmailer/src/SMTP.php';
 require __DIR__ . '/../../phpmailer/src/Exception.php';
-//require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-//require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/Exception.php';
 require_once __DIR__ . '/../libraries/fpdf/fpdf.php';
 require __DIR__ . '/../../vendor/autoload.php';
-
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
-// require_once __DIR__ . '/../libraries/phpmailer/src/PHPMailer.php';
-// require_once __DIR__ . '/../libraries/phpmailer/src/SMTP.php';
-// require_once __DIR__ . '/../libraries/phpmailer/src/Exception.php';
-
 
 
 class Pages extends Controller
@@ -224,7 +215,8 @@ class Pages extends Controller
     {
         $this->view("pages/contactPage");
     }
-    public function payment() //takes in id
+
+    public function payment() //takes in idb
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mollie = new \Mollie\Api\MollieApiClient();
@@ -237,17 +229,22 @@ class Pages extends Controller
                     "value" => "$amount"
                 ],
                 "description" => "$description",
-                "redirectUrl" => "http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/pages/generatePDF",
+                "redirectUrl" => "http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/pages/emailCustomer",
                 "webhookUrl" => "",
                 // "metadata" => $id
             ]);
             $_SESSION['payment_id'] = $payment->id;
+            $_SESSION['date_created'] = $payment->createdAt;
+            $_SESSION['due_date'] = $payment->expiresAt;
+
             $payment1 = $mollie->payments->get($_SESSION['payment_id']);
+            $this->generatePDF();
             if ($payment1->isPaid()) {
                 //generatepdf
-
-                //email to customer
-                $this->emailCustomer();
+                $this->generatePDF();
+                //$this->emailCustomer();
+            } else {
+                echo "error";
             }
             redirectPayment($payment->getCheckoutUrl(), true, 303);
         }
@@ -261,13 +258,52 @@ class Pages extends Controller
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
 
-
         //orderId
-        //orderDetails username email and stuff
+        $totalprice = $_SESSION['totalprice'];
+        $paymentDueDate =  $_SESSION['due_date'];
+        $invoiceDate = $_SESSION['date_created'];
+        $firstname = $_POST["first_name"];
+        $lastname = $_POST["last_name"];
+        $email = $_POST["email"];
+        $day = $_POST["day"];
+        $month = $_POST["month"];
+        $year = $_POST["year"];
+        $address = $_POST["address"];
+        $postcode = $_POST["postcode"];
+        $phonenumber = $_POST["phonenumber"];
+        $priceWithVAT = $this->calculateVat();
+
+
+
+        $pdf->Cell(100, 20, "First name: " . $firstname . " " . $lastname, 10, 0, 'C'); //name
+        $pdf->Ln();
+        $pdf->Cell(100, 20, "Email: " . $email, 10, 0, 'C'); //email
+        $pdf->Ln();
+        $pdf->Cell(100, 20, "Date: " . $day . "/" . $month . "/" . $year, 10, 0, 'C'); //date
+        $pdf->Ln();
+        //address of client
+        $pdf->Cell(100, 20, "Address: " . $address . ", " . $postcode, 10, 0, 'C'); //address
+        $pdf->Ln();
+        //order number
+        //..
+        //phone number
+        $pdf->Cell(100, 20, "Phone number: " . $phonenumber, 10, 0, 'C'); //phone number
+        $pdf->Ln();
+        //total amount
+        $pdf->Cell(100, 20, "Total: " . "$" . $totalprice, 10, 0, 'C'); //totalprice TODO:add euro sign
+        $pdf->Ln();
+        //value added tax
+        $pdf->Cell(100, 20, "Total price with VAT(21%): " . "$" . $priceWithVAT, 10, 0, 'C'); //total with VAT
+        $pdf->Ln();
+        //invoice date
+        $pdf->Cell(100, 20, "Invoice Date: "  . $invoiceDate, 10, 0, 'C'); //invoice date 
+        $pdf->Ln();
+        //payment due date
+        $pdf->Cell(100, 20, "Payment Due Date: "  . $paymentDueDate, 10, 0, 'C'); //payment due date 
+        $pdf->Ln();
 
 
         //customer details
-
         $items = "";
         foreach ($_SESSION["shopping_cart"] as $item) {
 
@@ -280,7 +316,6 @@ class Pages extends Controller
             $pdf->Cell(100, 20, "Price per person: " . $item["item_price"], 10, 0, 'C'); //price
             $pdf->Ln();
         }
-        //                $text = $text . $items;
 
 
         $pdf->Cell(100, 20, $items, 10, 0, 'C');
@@ -288,16 +323,15 @@ class Pages extends Controller
 
         $filename = "haarlem_festival.pdf";
         $pdf->Output('F', '../' . $filename, true);
+        //$pdf->Output();
 
-        $this->view("pages/confirmation");
+
+        //$this->view("pages/confirmation");
     }
+
     public function emailCustomer()
     {
-        //.. emailing customer
-        // $mail = new PHPMailer\PHPMailer\PHPMailer(true);
         $mail = new PHPMailer(true);
-
-
         try {
             //Server settings
             //$mail->SMTPDebug = 3;                     //Enable verbose debug output
@@ -316,9 +350,8 @@ class Pages extends Controller
             $mail->setFrom('haarlemfestivalgroup2@gmail.com', "sender");
             $mail->addAddress('tsaglisamuel6@gmail.com', "receiveer");     //Add a recipient          //Name is optional
 
-
-            //Attachments    //Add attachments
-            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+            $filename = 'haarlem_festival.pdf';
+            $mail->addAttachment('../' . $filename);    //Optional name
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
@@ -332,5 +365,13 @@ class Pages extends Controller
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+        $this->view("pages/confirmation");
+    }
+    public function calculateVat()
+    {
+        $vat = 0.21; //VAT 21%
+        $totalVAT = $vat * $_SESSION["totalprice"];
+        $priceWithVAT = $_SESSION["totalprice"] + $totalVAT;
+        return $priceWithVAT;
     }
 }
