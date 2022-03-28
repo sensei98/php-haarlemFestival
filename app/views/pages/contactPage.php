@@ -117,6 +117,7 @@
                     </section>
                 </section>
 
+                <a class='btn-order' href='<?php echo URLROOT; ?>/pages/generatePDF'>To order</a>
             </form>
         </section>
 

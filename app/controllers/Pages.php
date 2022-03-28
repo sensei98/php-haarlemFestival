@@ -1,6 +1,25 @@
 <?php
 
 require_once __DIR__ . '/../../mollie-api-php/vendor/autoload.php';
+//require __DIR__ . '/../..//phpmailer/phpmailer/src/SMTP.php';
+require __DIR__ . '/../../phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../../phpmailer/src/SMTP.php';
+require __DIR__ . '/../../phpmailer/src/Exception.php';
+//require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+//require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/Exception.php';
+require_once __DIR__ . '/../libraries/fpdf/fpdf.php';
+require __DIR__ . '/../../vendor/autoload.php';
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// require_once __DIR__ . '/../libraries/phpmailer/src/PHPMailer.php';
+// require_once __DIR__ . '/../libraries/phpmailer/src/SMTP.php';
+// require_once __DIR__ . '/../libraries/phpmailer/src/Exception.php';
+
+
 
 class Pages extends Controller
 {
@@ -218,25 +237,100 @@ class Pages extends Controller
                     "value" => "$amount"
                 ],
                 "description" => "$description",
-                "redirectUrl" => "http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/pages/confirmation",
+                "redirectUrl" => "http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/pages/generatePDF",
                 "webhookUrl" => "",
                 // "metadata" => $id
-
             ]);
             $_SESSION['payment_id'] = $payment->id;
+            $payment1 = $mollie->payments->get($_SESSION['payment_id']);
+            if ($payment1->isPaid()) {
+                //generatepdf
+
+                //email to customer
+                $this->emailCustomer();
+            }
             redirectPayment($payment->getCheckoutUrl(), true, 303);
         }
     }
 
-    public function paymentStatus()
-    {
-        $mollie = new \Mollie\Api\MollieApiClient();
-        $mollie->setApiKey('test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8');
-        $payment = $mollie->payments->get($_SESSION['payment_id']);
-        // if($payment->isPaid()){
-        //     $this->payOrder();
-        //unset shopping cart
-        // }
 
+    public function generatePDF()
+    {
+        //if isset(orderId)
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+
+
+        //orderId
+        //orderDetails username email and stuff
+
+
+        //customer details
+
+        $items = "";
+        foreach ($_SESSION["shopping_cart"] as $item) {
+
+            // $pdf->Cell(100, 20, "Event: " . $item["hostType"], 10, 0, 'C');
+            // $pdf->Ln();
+            $pdf->Cell(100, 20, "Artist: " . $item["item_name"], 10, 0, 'C'); //artist
+            $pdf->Ln();
+            $pdf->Cell(100, 20, "EventLocation: " . $item["eventLocation"], 10, 0, 'C'); //location
+            $pdf->Ln();
+            $pdf->Cell(100, 20, "Price per person: " . $item["item_price"], 10, 0, 'C'); //price
+            $pdf->Ln();
+        }
+        //                $text = $text . $items;
+
+
+        $pdf->Cell(100, 20, $items, 10, 0, 'C');
+        $pdf->Ln();
+
+        $filename = "haarlem_festival.pdf";
+        $pdf->Output('F', '../' . $filename, true);
+
+        $this->view("pages/confirmation");
+    }
+    public function emailCustomer()
+    {
+        //.. emailing customer
+        // $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+        $mail = new PHPMailer(true);
+
+
+        try {
+            //Server settings
+            //$mail->SMTPDebug = 3;                     //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+            $mail->Username = 'haarlemfestivalgroup2@gmail.com';                     //SMTP username
+            $mail->Password = 'haarlemfestival';
+            $mail->SMTPSecure = "tls";                                 //SMTP password
+            $mail->Port = 587;
+
+            //$mail->Priority = 1;
+            //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('haarlemfestivalgroup2@gmail.com', "sender");
+            $mail->addAddress('tsaglisamuel6@gmail.com', "receiveer");     //Add a recipient          //Name is optional
+
+
+            //Attachments    //Add attachments
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = 'Here is the subject';
+            $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            echo 'Message has been sent';
+            $this->view("pages/confirmation");
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
     }
 }
