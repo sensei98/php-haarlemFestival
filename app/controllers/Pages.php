@@ -216,6 +216,10 @@ class Pages extends Controller
     {
         $this->view("pages/contactPage");
     }
+    public function confirmation()
+    {
+        $this->view("pages/confirmation");
+    }
 
     public function ValidateData($data)
     {
@@ -252,6 +256,8 @@ class Pages extends Controller
             if ($payment1->isPaid()) {
                 //generatepdf
                 $this->generatePDF();
+
+
                 //$this->emailCustomer();
             } else {
                 echo "error";
@@ -317,7 +323,6 @@ class Pages extends Controller
 
 
         //customer details
-        $items = "";
         foreach ($_SESSION["shopping_cart"] as $item) {
 
             $pdf->Cell(100, 10, "ARTIST: " . $item["item_name"], 1, 0, 'C'); //artist
@@ -328,9 +333,6 @@ class Pages extends Controller
             $pdf->Ln();
         }
 
-
-        // $pdf->Cell(100, 20, $items, 1, 0, '');
-        // $pdf->Ln();
 
         $filename = "haarlem_festival.pdf";
         $pdf->Output('F', '../' . $filename, true);
@@ -371,7 +373,7 @@ class Pages extends Controller
 
 
             $mail->send();
-            echo 'Message has been sent';
+            // echo 'Message has been sent';
             $this->view("pages/confirmation");
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

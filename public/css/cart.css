@@ -60,7 +60,7 @@
 
 /*-----------------------------------------------------*/
 /* PROGRESS BAR*/
-.progressbar-container{
+.progressbar-container, .progressbar-2-container, .progressbar-3-container{
     max-width:800px;
     width:100%;
     margin:30px auto;

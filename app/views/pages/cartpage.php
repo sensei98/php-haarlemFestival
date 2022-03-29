@@ -15,7 +15,7 @@
             <a href="#">payment</a>
         </li>
         <li class="#">
-            <a href="#">confirmation</a>
+            <a href="#n">payment</a>
         </li>
     </ul>
 </section>

@@ -1,0 +1,93 @@
+
+/*-----------------------------------------------------*/
+/* PROGRESS BAR*/
+.progressbar-3-container{
+    max-width:800px;
+    width:100%;
+    margin:30px auto;
+    position:relative;
+}
+.progressbar-3-container .progressbar li a {
+    left: 5px;
+    text-decoration: none;
+}
+.progressbar-3-container .progressbar li.active a{
+    color:#8959E5;
+    font-weight:500;
+} 
+.progressbar-2{
+    padding-bottom: 50px;
+}
+
+.progressbar-3 li.active{
+    color:#8959E5;
+    font-weight:600;
+}
+.progressbar-3 li.active:before{
+    background-color:#8959E5;
+    color:#8959E5;
+}
+.progressbar-3 li.active:after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: block;
+    text-align: center;
+    border: 1px solid #a4a4a4;
+    margin: 10px auto 10px auto;
+    border-radius: 100%; 
+    position: absolute;
+    top: 25px;
+    left: 50%;
+}
+
+.progressbar-3 li{
+    list-style-type:none;
+    width:25%;
+    font-weight:500;
+    float:left;
+    font-size:13px;
+    position:relative;
+    text-align:center;
+    text-transform: capitalize;
+    color: #7d7d7d;
+}
+.progressbar-3 li:before {
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: block;
+    text-align: center;
+    border: 1px solid #a4a4a4;
+    margin: 10px auto 10px auto;
+    border-radius: 100%;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+}
+/*FOR PROGESS VERTICAL BAR*/
+.progressbar-3 li:after {
+    width: 93%;
+    height: 1px;
+    content: '';
+    position: absolute;
+    background-color: #a4a4a4;
+    top: 40px;
+    left: -44%; /*vertical bar*/ 
+    z-index: -1;
+}
+li{
+    display:list-item;
+}
+ul{
+    list-style:none;
+}
+.active a {
+    font-style: "vertical-align: inherit";
+}
+.progressbar-2-container li a {
+    color: #a4a4a4;
+    left: 7px;
+    font-weight: 500;
+}
