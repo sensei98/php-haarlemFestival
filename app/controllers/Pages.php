@@ -222,7 +222,7 @@ class Pages extends Controller
             $mollie = new \Mollie\Api\MollieApiClient();
             $mollie->setApiKey('test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8');
             $amount = sprintf("%.2f", $_SESSION['totalprice']);
-            $description = $_SESSION['username'] . ' payment'; // save name to session variable
+            $description = $_POST['firstname'] . ' payment'; // save name to session variable
             $payment = $mollie->payments->create([
                 "amount" => [
                     "currency" => "EUR",
@@ -253,18 +253,19 @@ class Pages extends Controller
 
     public function generatePDF()
     {
-        //if isset(orderId)
         $pdf = new FPDF();
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
 
         //orderId
         $totalprice = $_SESSION['totalprice'];
-        $paymentDueDate =  $_SESSION['due_date'];
-        $invoiceDate = $_SESSION['date_created'];
+        $getFormattedDate = $this->convertDateGmtToString();
+        $invoiceDate = $getFormattedDate[1];
+        $paymentDueDate = $getFormattedDate[0];
+        $_SESSION["email_address"] = $_POST["email"];
         $firstname = $_POST["first_name"];
         $lastname = $_POST["last_name"];
-        $email = $_POST["email"];
+        $email =  $_SESSION["email_address"];
         $day = $_POST["day"];
         $month = $_POST["month"];
         $year = $_POST["year"];
@@ -275,31 +276,32 @@ class Pages extends Controller
 
 
 
-        $pdf->Cell(100, 20, "First name: " . $firstname . " " . $lastname, 10, 0, 'C'); //name
+
+        $pdf->Cell(100, 10, "First name: " . $firstname . " " . $lastname, 10, 0, 'C'); //name
         $pdf->Ln();
-        $pdf->Cell(100, 20, "Email: " . $email, 10, 0, 'C'); //email
+        $pdf->Cell(100, 10, "Email: " . $email, 10, 0, 'C'); //email
         $pdf->Ln();
-        $pdf->Cell(100, 20, "Date: " . $day . "/" . $month . "/" . $year, 10, 0, 'C'); //date
+        $pdf->Cell(100, 10, "Date: " . $day . "/" . $month . "/" . $year, 10, 0, 'C'); //date
         $pdf->Ln();
         //address of client
-        $pdf->Cell(100, 20, "Address: " . $address . ", " . $postcode, 10, 0, 'C'); //address
+        $pdf->Cell(100, 10, "Address: " . $address . ", " . $postcode, 10, 0, 'C'); //address
         $pdf->Ln();
         //order number
         //..
         //phone number
-        $pdf->Cell(100, 20, "Phone number: " . $phonenumber, 10, 0, 'C'); //phone number
+        $pdf->Cell(100, 10, "Phone number: " . $phonenumber, 10, 0, 'C'); //phone number
         $pdf->Ln();
         //total amount
-        $pdf->Cell(100, 20, "Total: " . "$" . $totalprice, 10, 0, 'C'); //totalprice TODO:add euro sign
+        $pdf->Cell(100, 10, "Total: " . "$" . $totalprice, 10, 0, 'C'); //totalprice TODO:add euro sign
         $pdf->Ln();
         //value added tax
-        $pdf->Cell(100, 20, "Total price with VAT(21%): " . "$" . $priceWithVAT, 10, 0, 'C'); //total with VAT
+        $pdf->Cell(100, 10, "Total price with VAT(21%): " . "$" . $priceWithVAT, 10, 0, 'C'); //total with VAT
         $pdf->Ln();
         //invoice date
-        $pdf->Cell(100, 20, "Invoice Date: "  . $invoiceDate, 10, 0, 'C'); //invoice date 
+        $pdf->Cell(100, 10, "Invoice Date: "  . $invoiceDate, 10, 0, 'C'); //invoice date 
         $pdf->Ln();
         //payment due date
-        $pdf->Cell(100, 20, "Payment Due Date: "  . $paymentDueDate, 10, 0, 'C'); //payment due date 
+        $pdf->Cell(100, 10, "Payment Due Date: "  . $paymentDueDate, 10, 0, 'C'); //payment due date 
         $pdf->Ln();
 
 
@@ -343,12 +345,11 @@ class Pages extends Controller
             $mail->SMTPSecure = "tls";                                 //SMTP password
             $mail->Port = 587;
 
-            //$mail->Priority = 1;
-            //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
+            $email =  $_SESSION["email_address"];
             $mail->setFrom('haarlemfestivalgroup2@gmail.com', "sender");
-            $mail->addAddress('tsaglisamuel6@gmail.com', "receiveer");     //Add a recipient          //Name is optional
+            $mail->addAddress($email, "receiveer");     //Add a recipient          //Name is optional
 
             $filename = 'haarlem_festival.pdf';
             $mail->addAttachment('../' . $filename);    //Optional name
@@ -373,5 +374,13 @@ class Pages extends Controller
         $totalVAT = $vat * $_SESSION["totalprice"];
         $priceWithVAT = $_SESSION["totalprice"] + $totalVAT;
         return $priceWithVAT;
+    }
+    public function convertDateGmtToString()
+    {
+        $due_date = $_SESSION['due_date'];
+        $date_Created = $_SESSION['date_created'];
+        $dueDate = date("d-m-Y", strtotime($due_date));
+        $dateCreated = date("d-m-Y", strtotime($date_Created));
+        return array($dueDate, $dateCreated);
     }
 }

@@ -3,13 +3,55 @@
 </head>
 
 <body>
-    <section class="progressbar-container">
-        <ul class="progressbar">
+    <!-- <div id="Group_223">
+        <svg class="Path_47" viewBox="0 0 21 18">
+            <path id="Path_47" d="M 10.5 0 C 16.29899024963379 0 21 4.02943754196167 21 9 C 21 13.97056198120117 16.29899024963379 18 10.5 18 C 4.701010227203369 18 0 13.97056198120117 0 9 C 0 4.02943754196167 4.701010227203369 0 10.5 0 Z">
+            </path>
+        </svg>
+        <svg class="Ellipse_11">
+            <ellipse id="Ellipse_11" rx="10.5" ry="9" cx="10.5" cy="9">
+            </ellipse>
+        </svg>
+        <svg class="Ellipse_8">
+            <ellipse id="Ellipse_8" rx="10.5" ry="9" cx="10.5" cy="9">
+            </ellipse>
+        </svg>
+        <svg class="Path_43" viewBox="0 0 21 18">
+            <path id="Path_43" d="M 10.5 0 C 16.29899024963379 0 21 4.02943754196167 21 9 C 21 13.97056198120117 16.29899024963379 18 10.5 18 C 4.701010227203369 18 0 13.97056198120117 0 9 C 0 4.02943754196167 4.701010227203369 0 10.5 0 Z">
+            </path>
+        </svg>
+        <svg class="Line_57" viewBox="0 0 427 1">
+            <path id="Line_57" d="M 0 0 L 427 0">
+            </path>
+        </svg>
+        <svg class="Line_78" viewBox="0 0 427 1">
+            <path id="Line_78" d="M 0 0 L 427 0">
+            </path>
+        </svg>
+        <svg class="Line_79" viewBox="0 0 427 1">
+            <path id="Line_79" d="M 0 0 L 427 0">
+            </path>
+        </svg>
+        <div id="Shopping_Basket">
+            <span>Shopping Basket</span>
+        </div>
+        <div id="Delivery_">
+            <span>Delivery </span>
+        </div>
+        <div id="Confirmation">
+            <span>Confirmation</span>
+        </div>
+        <div id="Payment">
+            <span>Payment</span>
+        </div>
+    </div> -->
+    <section class="progressbar-2-container">
+        <ul class="progressbar-2">
             <li class="#">
                 <a href="<?php echo URLROOT; ?>/Pages/addTocart">shopping basket</a>
             </li>
             <li class="active">
-                <a href="#">delivery</a>
+                <a href="<?php echo URLROOT; ?>/Pages/contactPage">delivery</a>
             </li>
             <li class="#">
                 <a href="#">payment</a>
@@ -20,51 +62,43 @@
         </ul>
     </section>
     <section class="left-container">
-        <svg class="Rectangle_178">
+        <!-- <svg class="Rectangle_178">
             <rect id="Rectangle_178" rx="28" ry="28" x="0" y="0" width="883" height="429">
             </rect>
-        </svg>
+        </svg> -->
         <section id="Tickets">
             <span>Tickets</span>
         </section>
+
         <svg class="Line_73" viewBox="0 0 823 1">
             <path id="Line_73" d="M 0 0 L 823 0">
             </path>
         </svg>
-        <svg class="Line_74" viewBox="0 0 823 1">
-            <path id="Line_74" d="M 0 0 L 823 0">
-            </path>
-        </svg>
-        <svg class="Line_75" viewBox="0 0 823 1">
-            <path id="Line_75" d="M 0 0 L 823 0">
-            </path>
-        </svg>
-        <svg class="Line_76" viewBox="0 0 823 1">
-            <path id="Line_76" d="M 0 0 L 823 0">
-            </path>
-        </svg>
-        <?php foreach ($_SESSION["shopping_cart"] as $value) : ?>
-            <section id="Gare_Du_Nord_x_2">
-                <span><?php echo $value["item_name"] ?> x <?php echo $value["item_quantity"] ?></span>
-            </section>
-            <section id="_30">
-                <span>&euro;<?php echo $value["item_price"] ?></span>
-            </section>
-        <?php endforeach; ?>
-        <section id="Total_amount">
-            <span>Total amount</span>
+        <section class="items-container">
+            <table class="customers">
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                <?php foreach ($_SESSION["shopping_cart"] as $value) : ?>
+                    <tr>
+                        <td><?php echo $value["item_name"]; ?></td>
+                        <td><?php echo $value["item_quantity"]; ?></td>
+                        <td>&euro;<?php echo $value["item_price"]; ?></td>
+                    </tr>
+
+
+                <?php endforeach; ?>
+                <td><span>Total Price: <span class="totalprice-span">&euro;<?php echo $_SESSION["totalprice"] ?></span></span></td>
+            </table>
         </section>
-        <section id="_55">
-            <span>&euro;<?php echo $_SESSION["totalprice"] ?></span>
-        </section>
+
         <section onclick="application.goToTargetView(event)" id="Group_221">
             <section id="edit">
-                <span>edit</span>
+                <a class="edit-text" href='<?php echo URLROOT; ?>/pages/addToCart'>edit</a>
             </section>
-            <svg class="Line_77" viewBox="0 0 40 1">
-                <path id="Line_77" d="M 0 0 L 40 0">
-                </path>
-            </svg>
+
         </section>
     </section>
 
@@ -123,7 +157,7 @@
                     </section>
                     <section class="btn-payment-container">
                         <section class="btn-continue-payment">
-                            <input class="btn-payment" type="submit" value="Confirm your order" name="confirm">
+                            <input class="btn-payment" type="submit" value="Confirm">
                         </section>
                     </section>
                 </section>

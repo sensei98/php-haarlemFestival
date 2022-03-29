@@ -1300,4 +1300,161 @@ button:hover{
     background-color:#8959E5;
     color:white;
 }
+.items-container{
+    width:40%;
+    height:20%;
+    align-items: center;
+    float:right;
+    margin-top:340px;
+    margin-right:140px;
+
+    padding-right:10px;
+   
+}
+.items-container span {
+    font-size: 20px;
+
+}
+.second-item{
+    position:relative;
+    left:200;
+}
+.third-item{
+    position:relative;
+    left:650;
+}
+hr{
+    position:relative;
+    top:40rem;
+    left:100rem;
+
+}
+.customers td, .customers th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.customers tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.customers tr:hover {
+    background-color: #ddd;
+}
+.customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #8959E5;
+    color: white;
+}
+.customers td{
+    font-size: 15px;
+    text-transform: capitalize;
+}
+.customers{
+    width:100%;
+    border-collapse: collapse;
+}
+.totalprice-span{
+    font-size: 24px;
+}
+#edit a{
+    color:black;
+}
+.edit-text:hover{
+    text-decoration: underline;
+}
+
+/*-----------------------------------------------------*/
+/* PROGRESS BAR*/
+.progressbar-2-container{
+    max-width:800px;
+    width:100%;
+    margin:30px auto;
+    position:relative;
+}
+.progressbar-2-container .progressbar li a {
+    left: 5px;
+    text-decoration: none;
+}
+.progressbar-2-container .progressbar li.active a{
+    color:#8959E5;
+    font-weight:500;
+} 
+.progressbar-2{
+    padding-bottom: 50px;
+}
+
+.progressbar-2 li.active{
+    color:#8959E5;
+    font-weight:600;
+}
+.progressbar-2 li.active:before{
+    background-color:#8959E5;
+    color:#8959E5;
+}
+.progressbar-2 li.active:after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: block;
+    text-align: center;
+    border: 1px solid #a4a4a4;
+    margin: 10px auto 10px auto;
+    border-radius: 100%; 
+    position: absolute;
+    top: 25px;
+    left: 50%;
+}
+
+.progressbar-2 li{
+    list-style-type:none;
+    width:25%;
+    font-weight:500;
+    float:left;
+    font-size:13px;
+    position:relative;
+    text-align:center;
+    text-transform: capitalize;
+    color: #7d7d7d;
+}
+.progressbar-2 li:before {
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: block;
+    text-align: center;
+    border: 1px solid #a4a4a4;
+    margin: 10px auto 10px auto;
+    border-radius: 100%;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+}
+/*FOR PROGESS VERTICAL BAR*/
+.progressbar-2 li:after {
+    width: 93%;
+    height: 1px;
+    content: '';
+    position: absolute;
+    background-color: #a4a4a4;
+    top: 40px;
+    left: -44%; /*vertical bar*/ 
+    z-index: -1;
+}
+li{
+    display:list-item;
+}
+ul{
+    list-style:none;
+}
+.active a {
+    font-style: "vertical-align: inherit";
+}
+.progressbar-2-container li a {
+    color: #a4a4a4;
+    left: 7px;
+    font-weight: 500;
+}
 
