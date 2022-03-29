@@ -62,10 +62,7 @@
         </ul>
     </section>
     <section class="left-container">
-        <!-- <svg class="Rectangle_178">
-            <rect id="Rectangle_178" rx="28" ry="28" x="0" y="0" width="883" height="429">
-            </rect>
-        </svg> -->
+
         <section id="Tickets">
             <span>Tickets</span>
         </section>
@@ -166,14 +163,6 @@
             </form>
         </section>
 
-
     </section>
-
-
-
-
-
-
-
 
 </body>

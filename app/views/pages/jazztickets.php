@@ -78,6 +78,7 @@ if (!isset($_SESSION)) {
                                             <input type="hidden" name="hidden_name" value="<?php echo $row[$i]->artistname; ?>" />
                                             <input type="hidden" name="hidden_price" value="<?php echo $row[$i]->price ?>" />
                                             <input type="hidden" name="hidden_ID" value="<?php echo $row[$i]->ID ?>" />
+                                            <input type="hidden" name="hidden_location" value="<?php echo $row[$i]->hall ?>" />
                                             <input class="button1" name="add" type="submit" value="Add to cart" onclick="location.href='<?php echo URLROOT; ?>/pages/cartpage?=<?php echo $row[$i]->ID ?>'">
                                             <input class="inputfield" type="text" name="quantity" value=1>
                                         </section>

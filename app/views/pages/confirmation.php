@@ -5,8 +5,6 @@
 
 <body>
     <p>Thanks for shopping with us</p>
-    <?php if (isset($_POST["submit"]) == "Confirm") {
-        var_dump($_POST["email"]);
-    } ?>
+    <?php var_dump($_SESSION["shopping_cart"]); ?>
 
 </body>
