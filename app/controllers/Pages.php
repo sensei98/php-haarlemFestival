@@ -6,6 +6,9 @@ require __DIR__ . '/../../phpmailer/src/SMTP.php';
 require __DIR__ . '/../../phpmailer/src/Exception.php';
 require_once __DIR__ . '/../libraries/fpdf/fpdf.php';
 require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../../phpqrcode/qrlib.php';
+
+QRcode::png($_GET['code']);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -48,13 +51,6 @@ class Pages extends Controller
         $this->view('pages/about', $data);
     }
 
-    // public function food_home()
-    // {
-    //     $restaurant = $this->restaurantModel->getAllRestaurant();
-    //     $restaurant_type = $this->restaurantModel->getAllType();
-    //     $data = array($restaurant, $restaurant_type);
-    //     $this->view('pages/food_home', $data);
-    // }
 
     public function cms()
     {
@@ -66,12 +62,6 @@ class Pages extends Controller
         $this->view('pages/cms', $data);
     }
 
-    // public function food_tickets($restaurant_Id)
-    // {
-    //     $ticket = $this->ticketsModel->getRestaurantTickets($restaurant_Id);
-    //     $data = array($ticket);
-    //     $this->view('pages/food_tickets', $data);
-    // }
 
     public function orders()
     {
@@ -171,6 +161,12 @@ class Pages extends Controller
                 $count = count($_SESSION['shopping_cart']);
                 $data = $this->getAllTicketsToCart($id);
                 $_SESSION['shopping_cart'][$count] = $data;
+
+                $lastIndex = array_key_last($data);
+                if ($count >= 4) {
+                    echo '<script>alert("No more items can be added")</script>';
+                    unset($_SESSION['shopping_cart'][$lastIndex]);
+                }
             } else {
                 echo '<script>alert("Item has already been added")</script>';
             }
@@ -293,8 +289,15 @@ class Pages extends Controller
 
 
         $pathToImage = URLROOT . "/public/img/icons/logo.png";
+        QRcode::png('$data', URLROOT . "/public/img/icons/code.png");
+
         $pdf->Image($pathToImage, 10, 10, 200, 0, 'PNG');
         //$pdf->Image($pathToImage, 60, 120, 90, 0, 'PNG');
+        $data = "Welcome to the haarlem Festival " . $firstname . " " . $lastname;
+
+        //$pdf->image("http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/app/controllers/qr.php/qr?code=$data", 160, 10, 20, 20, "png");
+
+
         $pdf->Cell(100, 10, "First name: " . $firstname . " " . $lastname, 1, 0, 'C'); //name
         $pdf->Ln();
         $pdf->Cell(100, 10, "Email: " . $email, 1, 0, 'C'); //email
