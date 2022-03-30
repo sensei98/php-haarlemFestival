@@ -83,31 +83,18 @@ if (!isset($_SESSION)) {
                                             <input class="inputfield" type="text" name="quantity" value=1>
                                         </section>
                                     </form>
-
-                                    <section id="1-popup" class="overlay">
-                                        <section class="popup">
-                                            <h4><?php echo $row[$i]->artistname; ?></h4>
-                                            <a class="close" href="#">&times;</a>
-                                            <section class="popup-content">
-
-                                                <!-- <?php
-                                                        if ($row['artistname']) {
-                                                            var_dump($row['about']); //commented
-                                                        } ?> -->
-
-                                            </section>
-                                        </section>
-                                    </section>
                                 </section>
                             </section>
-                        </li>
-                    </ul>
                 </section>
-                <script src="../js/button-animation.js"></script>
-            <?php endfor;
-            ?>
-        <?php endforeach;
-        ?>
+    </section>
+    </li>
+    </ul>
+    </section>
+    <script src="../js/button-animation.js"></script>
+<?php endfor;
+?>
+<?php endforeach;
+?>
 
 </body>
 
