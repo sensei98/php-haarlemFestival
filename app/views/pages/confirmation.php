@@ -27,6 +27,4 @@
     </section>
     <section class='btn-continue-container'><a class='btn-continue' href='<?php echo URLROOT; ?>/pages/index'>Continue shopping?</a></section>
 
-
-
 </body>

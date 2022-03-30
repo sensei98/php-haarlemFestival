@@ -1278,9 +1278,11 @@ button:hover{
 }
 .btn-continue-payment{
     position: absolute;
-    bottom: 0;
-    left:90%;
+    top: 20;
+    left:230%;
+    margin: 10px;
     padding:20px;
+
 }
 
 .btn-payment{
@@ -1457,4 +1459,5 @@ ul{
     left: 7px;
     font-weight: 500;
 }
+
 

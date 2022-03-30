@@ -20,7 +20,7 @@
             <a href="https://www.google.com/maps/place/Patronaat/@52.3828953,4.6287256,15z/data=!4m5!3m4!1s0x0:0x74fe2502604b46ae!8m2!3d52.3828953!4d4.6287256"><img src="<?php echo URLROOT . '/uploads/map.png' ?>" alt="map to haarlem"></a>
         </section>
         <section class="main-content">
-            <h2>Top Artists and Bands Performing</h2>
+            <h2>All Artists and Bands Performing</h2>
         </section>
 
         <?php
@@ -55,6 +55,9 @@
 </section>
 <?php endforeach; ?>
 
+<footer>
+    <?php require APPROOT . '/views/includes/footer.php' ?>
+</footer>
 </body>
 
 </html>

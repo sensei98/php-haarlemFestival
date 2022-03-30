@@ -221,15 +221,19 @@ h1{
 .main-content{
     border: 4px solid #8959E5 ;
     width: auto;
-    margin-top:400px;
-    padding: 10px;
+    margin-top:350px;
+    margin-bottom:50px;
+    padding: 20px;
 }
 .main-content > h2{
-    width: 70%;
-    padding: 10px 35%;
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
-    font-style: bold;
+    font-style: bold; 
+    align-items: center;
+    float:center;
+    margin:auto;
+    width:100%;
+    padding:10px;
 }
 
 /*for map*/

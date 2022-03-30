@@ -96,6 +96,10 @@ if (!isset($_SESSION)) {
 <?php endforeach;
 ?>
 
+<footer>
+    <?php require APPROOT . '/views/includes/footer.php' ?>
+</footer>
 </body>
+
 
 </html>

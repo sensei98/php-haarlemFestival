@@ -102,17 +102,10 @@
                         <input type="text" placeholder="MM" class="dob" name="month">
                         <input type="text" placeholder="YYYY" class="dob" name="year">
                     </section>
-                    <section class="input-box">
-                        <h4>
-                            Gender</h4>
-                        <input type="radio" id="b1" name="gender" checked class="radio">
-                        <label for="b1">Male</label>
-                        <input type="radio" id="b2" name="gender" class="radio">
-                        <label for="b2">Female</label>
-                    </section>
+
                     <section class="btn-payment-container">
                         <section class="btn-continue-payment">
-                            <input class="btn-payment" type="submit" value="Confirm">
+                            <input class="btn-payment" type="submit" value="To payment">
                         </section>
                     </section>
                 </section>
@@ -120,5 +113,6 @@
         </section>
 
     </section>
+
 
 </body>
