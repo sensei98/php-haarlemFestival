@@ -761,7 +761,7 @@
 }
 #Rectangle_97 {
     opacity: 0.52;
-    fill: rgba(20,48,232,1);
+    fill: #6610f2;
 }
 .Rectangle_97 {
     position: absolute;
@@ -1362,7 +1362,6 @@
 }
 
 
-/* GRAB THIS PIECE OF SHIT EVERY FUCKING TIME WITH A NEW VIEW */
 a {
     text-decoration: none !important;
 }
@@ -1536,20 +1535,7 @@ Lables {
     font-size: 40px;
     color: rgba(3,3,3,1);
 }
-/* # {
-    left: 1617px;
-    top: 33.038px;
-    position: absolute;
-    overflow: visible;
-    width: 179px;
-    white-space: nowrap;
-    text-align: center;
-    font-family: Averta Demo PE;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 40px;
-    color: rgba(3,3,3,1);
-} */
+
 #Rectangle_102 {
     opacity: 0.15;
     fill: rgba(255,255,255,1);
@@ -1732,4 +1718,19 @@ Lables {
     font-weight: normal;
     font-size: 27px;
     color: rgba(20,19,19,1);
+}
+.accesspass-containers{
+    padding:20px;
+}
+.accesspass-tickets{
+    font-size:18px;
+}
+.register-heading h1{
+    text-transform: uppercase;
+    font-size:50px;
+    color:black;
+}
+.register-heading{
+    position: absolute;
+    bottom: 130%;
 }

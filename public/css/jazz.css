@@ -752,11 +752,12 @@ li{
     /* margin-left:90px; */
     font-size: 15px;
 }
-.inputfield{
+.inputfield {
     margin-left: -50px;
     width: 50px;
     height:30px;
     font-size: 16px;
+    border:1px solid #ccc;
 }
 .tickets-buttons label{
     font-size:18px;

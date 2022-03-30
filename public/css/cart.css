@@ -175,16 +175,17 @@ ul{
 }
 
 .content-container span{
-    line-height: 80px;
     margin-bottom: 50px;
     font-size: 18px;
     height:7rem;
     text-transform: uppercase;
+    align-items: center;
+
 }
 .basket-item1{
     text-align:center;
     color:#ffff;
-    align-items:'center';
+    align-items:center;
     display:flex;
     flex-direction:column;
     margin-top:2rem;

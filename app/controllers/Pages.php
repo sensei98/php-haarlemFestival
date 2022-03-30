@@ -22,14 +22,15 @@ class Pages extends Controller
         $this->ticketModel = $this->model('Ticket');
         $this->userModel = $this->model('User');
         $this->JazzModel = $this->model('JazzModel');
+        $this->AllAccessPass = $this->model('AllAccessPass');
     }
 
     public function index()
     {
-        $restaurant = $this->restaurantModel->getAllRestaurant();
-        $restaurant_type = $this->restaurantModel->getAllType();
-        $data = array($restaurant, $restaurant_type);
+        $accessPassTickets = $this->AllAccessPass->getAccessPasses();
+        $data = array($accessPassTickets);
         $this->view('pages/homepage', $data);
+
 
         /*$data = [
             'title' => 'Home page'
@@ -47,13 +48,13 @@ class Pages extends Controller
         $this->view('pages/about', $data);
     }
 
-    public function food_home()
-    {
-        $restaurant = $this->restaurantModel->getAllRestaurant();
-        $restaurant_type = $this->restaurantModel->getAllType();
-        $data = array($restaurant, $restaurant_type);
-        $this->view('pages/food_home', $data);
-    }
+    // public function food_home()
+    // {
+    //     $restaurant = $this->restaurantModel->getAllRestaurant();
+    //     $restaurant_type = $this->restaurantModel->getAllType();
+    //     $data = array($restaurant, $restaurant_type);
+    //     $this->view('pages/food_home', $data);
+    // }
 
     public function cms()
     {
@@ -65,12 +66,12 @@ class Pages extends Controller
         $this->view('pages/cms', $data);
     }
 
-    public function food_tickets($restaurant_Id)
-    {
-        $ticket = $this->ticketsModel->getRestaurantTickets($restaurant_Id);
-        $data = array($ticket);
-        $this->view('pages/food_tickets', $data);
-    }
+    // public function food_tickets($restaurant_Id)
+    // {
+    //     $ticket = $this->ticketsModel->getRestaurantTickets($restaurant_Id);
+    //     $data = array($ticket);
+    //     $this->view('pages/food_tickets', $data);
+    // }
 
     public function orders()
     {

@@ -1,6 +1,13 @@
 <?php
 include APPROOT . '/views/includes/head.php';
 ?>
+<?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+?>
 <article id="Web_1920__3">
 
     <section id="sharing">
@@ -105,45 +112,37 @@ include APPROOT . '/views/includes/head.php';
                 </section>
             </a>
         </section>
+
     </section>
+    <!-- ALL ACCESS PASS TICKET SECTION-->
     <section id="register">
-        <section id="Dont_have_an_account_yet">
-            <span>Don't have an account yet?</span>
+        <section class="register-heading">
+            <h1>All access passes</h1>
         </section>
-        <svg class="Rectangle_111_ca">
-            <linearGradient id="Rectangle_111_ca" spreadMethod="pad" x1="0" x2="0.963" y1="1" y2="0.171">
-                <stop offset="0" stop-color="#ff518b" stop-opacity="1"></stop>
-                <stop offset="1" stop-color="#fcc75f" stop-opacity="1"></stop>
-            </linearGradient>
-            <rect id="Rectangle_111_ca" rx="3" ry="3" x="0" y="0" width="463" height="6">
-            </rect>
-        </svg>
-        <svg class="Rectangle_112_cb">
-            <linearGradient id="Rectangle_112_cb" spreadMethod="pad" x1="0" x2="0.963" y1="1" y2="0.171">
-                <stop offset="0" stop-color="#ff518b" stop-opacity="1"></stop>
-                <stop offset="1" stop-color="#fcc75f" stop-opacity="1"></stop>
-            </linearGradient>
-            <rect id="Rectangle_112_cb" rx="3" ry="3" x="0" y="0" width="463" height="6">
-            </rect>
-        </svg>
-        <svg class="Rectangle_113_cd">
-            <linearGradient id="Rectangle_113_cd" spreadMethod="pad" x1="0" x2="0.963" y1="1" y2="0.171">
-                <stop offset="0" stop-color="#ff518b" stop-opacity="1"></stop>
-                <stop offset="1" stop-color="#fcc75f" stop-opacity="1"></stop>
-            </linearGradient>
-            <rect id="Rectangle_113_cd" rx="3" ry="3" x="0" y="0" width="463" height="6">
-            </rect>
-        </svg>
-        <a id="Button_GO_ce">
-            <svg class="Rectangle_95_cf">
-                <rect id="Rectangle_95_cf" rx="0" ry="0" x="0" y="0" width="554" height="75">
-                </rect>
-            </svg>
-            <section id="Register_cg">
-                <span>Register</span>
-            </section>
-        </a>
+        <?php
+        foreach ($data as $row) :
+            for ($i = 0; $i < count($row); $i++) :
+        ?>
+                <form method="post" action="<?php echo URLROOT; ?>/Pages/addTocart/<?php echo $row[$i]->ID ?>">
+                    <section class="accesspass-containers">
+                        <span class="accesspass-tickets"><?php echo $row[$i]->Name; ?> (&euro;<?php echo $row[$i]->Price ?>)</span>
+                        <section class="tickets-buttons">
+                            <input type="hidden" name="hidden_name" value="<?php echo $row[$i]->Name; ?>" />
+                            <input type="hidden" name="hidden_price" value="<?php echo $row[$i]->Price ?>" />
+                            <input type="hidden" name="hidden_ID" value="<?php echo $row[$i]->ID ?>" />
+                            <input type="hidden" name="hidden_location" value="<?php echo $row[$i]->Location ?>" />
+                            <input class="button1" name="add" type="submit" value="Add to cart" onclick="location.href='<?php echo URLROOT; ?>/pages/cartpage?=<?php echo $row[$i]->ID ?>'">
+                            <input class="inputfield" type="text" name="quantity" value=1>
+                        </section>
+                    </section>
+
+                </form>
+            <?php endfor; ?>
+        <?php endforeach; ?>
+
     </section>
+    <!-- ALL ACCESS PASS TICKET SECTION-->
+
     <section id="midDance">
         <img id="Image_1" src="<?php echo URLROOT; ?>/public/img/brinkman.jpg" srcset="<?php echo URLROOT; ?>/public/img/brinkman.jpg 1x, <?php echo URLROOT; ?>/public/img/brinkman.jpg 2x">
 
