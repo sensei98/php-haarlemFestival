@@ -74,7 +74,7 @@
     position: absolute;
     background-color: #a4a4a4;
     top: 40px;
-    left: -44%; /*vertical bar*/ 
+    left: 56%; /*vertical bar*/ 
     z-index: -1;
 }
 li{

@@ -13,13 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="<?= URLROOT . '/public/css/bootstrap.min.css' ?>">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/CMS.css">
-    <!-- for jazz  -->
     <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/jazz.css' ?>">
     <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/homepage.css' ?>">
     <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/cart.css' ?>">
     <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/contactPage.css' ?>">
     <link rel="stylesheet" href="<?php echo URLROOT . '/public/css/confirmation.css' ?>">
-    <!-- for jazz  -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="<?= URLROOT . '/public/jquery/jquery.min.js' ?>"></script>

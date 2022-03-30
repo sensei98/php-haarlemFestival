@@ -15,6 +15,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 
+
 class Pages extends Controller
 {
     public function __construct()
@@ -269,6 +270,7 @@ class Pages extends Controller
         $pdf = new FPDF();
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 10);
+        define('EURO', chr(128));
 
         //orderId
         $totalprice = $_SESSION['totalprice'];
@@ -313,10 +315,10 @@ class Pages extends Controller
         $pdf->Cell(100, 10, "Phone number: " . $phonenumber, 1, 0, 'C'); //phone number
         $pdf->Ln();
         //total amount
-        $pdf->Cell(100, 10, "Total: " . "$" . $totalprice, 1, 0, 'C'); //totalprice TODO:add euro sign
+        $pdf->Cell(100, 10, "Total: " . EURO . $totalprice, 1, 0, 'C'); //totalprice 
         $pdf->Ln();
         //value added tax
-        $pdf->Cell(100, 10, "Total price with VAT(21%): " . "$" . $priceWithVAT, 1, 0, 'C'); //total with VAT
+        $pdf->Cell(100, 10, "Total price with VAT(21%): " . EURO . $priceWithVAT, 1, 0, 'C'); //total with VAT
         $pdf->Ln();
         //invoice date
         $pdf->Cell(100, 10, "Invoice Date: "  . $invoiceDate, 1, 0, 'C'); //invoice date 
@@ -333,17 +335,13 @@ class Pages extends Controller
             $pdf->Ln();
             $pdf->Cell(100, 10, "EVENT LOCATION: " . $item["item_location"], 1, 0, 'C'); //location
             $pdf->Ln();
-            $pdf->Cell(100, 10, "PRICE PER PERSON: " . $item["item_price"], 1, 0, 'C'); //price
+            $pdf->Cell(100, 10, "PRICE PER PERSON: " . EURO .  $item["item_price"], 1, 0, 'C'); //price
             $pdf->Ln();
         }
 
 
         $filename = "haarlem_festival.pdf";
         $pdf->Output('F', '../' . $filename, true);
-        //$pdf->Output();
-
-
-        //$this->view("pages/confirmation");
     }
 
     public function emailCustomer()
@@ -356,9 +354,9 @@ class Pages extends Controller
             $mail->Host = 'smtp.gmail.com';  //Set the SMTP server to send through
             $mail->SMTPAuth = true; //Enable SMTP authentication
             $mail->Username = 'haarlemfestivalgroup2@gmail.com'; //SMTP username
-            $mail->Password = 'haarlemfestival';
+            $mail->Password = 'haarlemfestival'; //password
             $mail->SMTPSecure = "tls";
-            $mail->Port = 587;
+            $mail->Port = 587; //googlemail port
 
 
             //Recipients

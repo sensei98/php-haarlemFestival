@@ -155,7 +155,7 @@ body {
 /*---------------------------------------------------------------------------------------------------*/
     
 /* BODY */
-.innersection-button{
+ .innersection-button{
     border:1px solid transparent;
     padding:8px 50px;
     color: #000000;
@@ -248,12 +248,12 @@ h1{
   
 .map-text img:hover{
     opacity: 0.7;
-}
+} 
 /*---------------------------------------------------------------------------------------------------*/
 
 /*ARTISTS AND PICTURES*/
-
-/* .artists-wrapper{
+/* 
+ .artists-wrapper{
     padding:60px;
     margin:40px;
     display: grid;
@@ -297,17 +297,17 @@ h1{
 .button:hover{
     background-color:#8959E5;
     color:#FFFFFF;
-} */
+} 
 
-/* .artists h3{
+.artists h3{
     margin:10px;
     padding:10px;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
     background-color: #F4F2F7;
     color:black;
-} */
-/* .view{ */
+}  */
+ .view{ 
     /* padding:60px;
     margin:40px;
     padding:60px;
@@ -316,32 +316,32 @@ h1{
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     grid-gap: 30px; */
 
-/* } */
+} 
 
 /* 
-.column img { 	 */
-    /* max-width: 400px; */
-    /* width:100%;
-    height:100%; */
-    /* max-height: 450px; */
-    /* align-items: center;
+.column img { 	
+    max-width: 400px; 
+    width:100%;
+    height:100%;
+    max-height: 450px;
+    align-items: center;
     margin-left: 80px;
-    padding:10px; */
-/* } */
-/* .column {
+    padding:10px;
+} 
+.column {
     float: left;
     width: 50%;
     padding: 10px;
   }
   .column img {
     margin-top: 12px;
-  } */
-  /* .row:after {
+  } 
+.row:after {
     content: "";
     display: table;
     clear: both;
-  } */
-/* .view-second .mask { 
+  } 
+.view-second .mask { 
 	background-color: rgba(115,146,184, 0.7); 
 	width: 300px;
     padding: 60px;
@@ -349,7 +349,7 @@ h1{
 	opacity: 0;
 	transform: translate(265px, 145px) rotate(45deg);
 	transition: all 0.2s ease-in-out;
-}
+/* } **
 .view-second h3 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     background: transparent;
@@ -381,11 +381,11 @@ h1{
 .view-second:hover a.info { 
 	transform: translate(0px,0px); 
 	transition-delay: 0.5s;
-} */
+}  */
 
 
 /* ------------------------------------------------------------- */
-
+/* 
 .container__img-list{
     list-style: none;
     padding: 0;
@@ -402,11 +402,10 @@ h1{
 }
 .container__img-list img{
     max-width:100%;
-    /* max-heg: 100%; */
     vertical-align: middle;
 
 }
- /* .artists-container .container__img-list,
+  .artists-container .container__img-list,
 .artists-container .details{
     
     width: 100%;
@@ -414,8 +413,8 @@ h1{
     position: absolute;
     box-sizing: border-box;
     transition: .5s;
-} */
-/* 
+} 
+
 .artists-container .container__img-list{
     top: 0;
     left: 0;
@@ -427,7 +426,8 @@ h1{
 .artists-container:hover .container__img-list{
     top: 0;
     left: -100%;
-}
+} */
+/* 
 .artists-container .details{
     background: #262626;
     top: 0;
@@ -448,11 +448,11 @@ h1{
 .artists-container .details p{
     margin: 20px 0 0;
     color: #fff;
-} */
+}  */
 
 /* ------------------------------------------------------------- */
-
-/* .container1 {
+/* 
+.container1 {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -489,13 +489,13 @@ h1{
   .box:hover > img {
     width: 100%;
     height: 100%;
-  }  */
-   
+  }  
+    */
 
 
 /*---------------------------------------------------------------------------------------------------*/
 /* FOR POPUP */
-.overlay{
+/* .overlay{
     position: fixed;
     top: 0;
     bottom: 0;
@@ -552,7 +552,7 @@ h1{
     .popup{
       width: 70%;
     }
-}
+} */
 
 /*---------------------------------------------------------------------------------------------------*/
 
@@ -836,17 +836,17 @@ li{
 }
 .artists-container .details h2{
     font-size:25px;
-   background-color:blue;
+
     text-transform: capitalize;
 }
 .artists-container .details p{
     font-size:13px;
-    background-color:orange;
+
 }
 
 .artists-container .container__img-list li img{
-    background-color:violet;
     padding:10px;
+    width: 200px;
 }
 
 

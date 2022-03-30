@@ -3,48 +3,6 @@
 </head>
 
 <body>
-    <!-- <div id="Group_223">
-        <svg class="Path_47" viewBox="0 0 21 18">
-            <path id="Path_47" d="M 10.5 0 C 16.29899024963379 0 21 4.02943754196167 21 9 C 21 13.97056198120117 16.29899024963379 18 10.5 18 C 4.701010227203369 18 0 13.97056198120117 0 9 C 0 4.02943754196167 4.701010227203369 0 10.5 0 Z">
-            </path>
-        </svg>
-        <svg class="Ellipse_11">
-            <ellipse id="Ellipse_11" rx="10.5" ry="9" cx="10.5" cy="9">
-            </ellipse>
-        </svg>
-        <svg class="Ellipse_8">
-            <ellipse id="Ellipse_8" rx="10.5" ry="9" cx="10.5" cy="9">
-            </ellipse>
-        </svg>
-        <svg class="Path_43" viewBox="0 0 21 18">
-            <path id="Path_43" d="M 10.5 0 C 16.29899024963379 0 21 4.02943754196167 21 9 C 21 13.97056198120117 16.29899024963379 18 10.5 18 C 4.701010227203369 18 0 13.97056198120117 0 9 C 0 4.02943754196167 4.701010227203369 0 10.5 0 Z">
-            </path>
-        </svg>
-        <svg class="Line_57" viewBox="0 0 427 1">
-            <path id="Line_57" d="M 0 0 L 427 0">
-            </path>
-        </svg>
-        <svg class="Line_78" viewBox="0 0 427 1">
-            <path id="Line_78" d="M 0 0 L 427 0">
-            </path>
-        </svg>
-        <svg class="Line_79" viewBox="0 0 427 1">
-            <path id="Line_79" d="M 0 0 L 427 0">
-            </path>
-        </svg>
-        <div id="Shopping_Basket">
-            <span>Shopping Basket</span>
-        </div>
-        <div id="Delivery_">
-            <span>Delivery </span>
-        </div>
-        <div id="Confirmation">
-            <span>Confirmation</span>
-        </div>
-        <div id="Payment">
-            <span>Payment</span>
-        </div>
-    </div> -->
     <section class="progressbar-2-container">
         <ul class="progressbar-2">
             <li class="#">
@@ -57,7 +15,7 @@
                 <a href="#">payment</a>
             </li>
             <li class="#">
-                <a href="#"> >confirmation</a>
+                <a href="#">confirmation</a>
             </li>
         </ul>
     </section>
@@ -158,8 +116,6 @@
                         </section>
                     </section>
                 </section>
-
-                <button class='btn-order' href='<?php echo URLROOT; ?>/pages/generatePDF'>generate PDF</button>
             </form>
         </section>
 

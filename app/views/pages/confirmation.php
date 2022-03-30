@@ -18,7 +18,7 @@
                 <a href="">payment</a>
             </li>
             <li class="active">
-                <a href="<?php echo URLROOT; ?>/Pages/confirmation"> >confirmation</a>
+                <a href="<?php echo URLROOT; ?>/Pages/confirmation"> confirmation</a>
             </li>
         </ul>
     </section>

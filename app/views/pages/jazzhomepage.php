@@ -28,62 +28,31 @@
             foreach ($row as $key => $value) :
 
         ?>
-
-                <!-- ARTISTS & THEIR RESPECTIVE ROYALTY IMAGES-->
-                <!-- <section class="artists-wrapper"> -->
-                <section class="artists-container">
-                    <ul class="container__img-list">
-                        <li><img src=" <?php if (!empty($value->image)) {
-                                            echo URLROOT . $value->image;
-                                        } ?> " alt="<?php if (!empty($value->artistname)) {
-                                                        echo $value->artistname;
-                                                    } ?>"></li>
-                    </ul>
-                    <section class="details">
-                        <h2><?php if (!empty($value->artistname)) {
-                                echo $value->artistname;
-                            } ?></h2>
-                        <p><?php if (!empty($value->about)) {
-                                echo $value->about;
-                            } ?></p>
-                    </section>
-                    <!-- <section class="container__artist">
-                        <?php //echo $row['artistname'];
-                        ?>
-                    </section> -->
-                    <section class="container__about">
-                        <?php //echo $row['about']
-                        ?>
-                    </section>
-
-                    <!-- 
-                    <a href="#popup1" type="button" class="button">Info</a>
-                    <a id="add-animation"><img src="../icons/ex.png"></a>
-                    <span id="counter">1</span> -->
-
-                    <!-- <section class="container-artists">
-                        <section class="box">
-                            <img src=" <?php //echo $row['image'] 
-                                        ?> " alt="<?php //echo $row['artistname']; 
-                                                    ?>">
-                            <span><?php //echo $row['artistname']; 
-                                    ?></span>
+                <!-- ARTISTS & THEIR RESPECTIVE ROYALTY FREE IMAGES-->
+                <section class="artists-wrapper">
+                    <section class="artists-container">
+                        <ul class="container__img-list">
+                            <li><img src=" <?php if (!empty($value->image)) {
+                                                echo URLROOT . $value->image;
+                                            } ?> " alt="<?php if (!empty($value->artistname)) {
+                                                            echo $value->artistname;
+                                                        } ?>"></li>
+                        </ul>
+                        <!-- DETAILS -->
+                        <section class="details">
+                            <h2><?php if (!empty($value->artistname)) {
+                                    echo $value->artistname;
+                                } ?></h2>
+                            <p><?php if (!empty($value->about)) {
+                                    echo $value->about;
+                                } ?></p>
                         </section>
-                    </section> -->
-
-
-                    <!-- <section class="mask"></section>
-                    <section class="content">
-                        <h3><?php //echo $row['artistname']; 
-                            ?></h3>
-                        <p><?php //echo $row['about'] 
-                            ?></p>
-                    </section> -->
+                    </section>
                 </section>
-                <!-- 
-                </section> -->
-            <?php endforeach; ?>
     </section>
+    </section>
+<?php endforeach; ?>
+</section>
 <?php endforeach; ?>
 
 </body>
