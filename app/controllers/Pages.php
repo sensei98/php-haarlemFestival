@@ -334,8 +334,6 @@ class Pages extends Controller
             //address of client
             $pdf->Cell(100, 10, "Address: " . $address . ", " . $postcode, 1, 0, 'C'); //address
             $pdf->Ln();
-
-            //..
             //phone number
             $pdf->Cell(100, 10, "Phone number: " . $phonenumber, 1, 0, 'C'); //phone number
             $pdf->Ln();
@@ -374,9 +372,9 @@ class Pages extends Controller
 
     public function emailCustomer()
     {
-        $mail = new PHPMailer(true);
+
         try {
-            //Server settings
+            $mail = new PHPMailer(true);
             //$mail->SMTPDebug = 3; //Enable verbose debug output
             $mail->isSMTP(); //Send using SMTP
             $mail->Host = 'smtp.gmail.com';  //Set the SMTP server to send through
@@ -386,8 +384,6 @@ class Pages extends Controller
             $mail->SMTPSecure = "tls";
             $mail->Port = 587; //googlemail port
 
-
-            //Recipients
             $email =  $_SESSION["email_address"];
             $mail->setFrom('haarlemfestivalgroup2@gmail.com', "Haarlem Festival");
             $mail->addAddress($email); //recipient 
