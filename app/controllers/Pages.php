@@ -154,7 +154,12 @@ class Pages extends Controller
 
     public function orderNumberGen()
     {
-        //....
+        $randomNo = rand(0, 100);
+        $day = date("d");
+        $month = date("m");
+        $year = date("Y");
+        $stringFormat = "HF" . $year . $month . $day . ($randomNo); //HF + year + month + date + random No
+        return $stringFormat;
     }
     #initializing shopping cart
     public function initShoppingCart($id)
@@ -168,7 +173,7 @@ class Pages extends Controller
                     $_SESSION['shopping_cart'][$count] = $data;
 
                     $lastIndex = array_key_last($data);
-                    if ($count >= 4) {
+                    if ($count >= 6) {
                         echo '<script>alert("No more items can be added")</script>';
                         unset($_SESSION['shopping_cart'][$lastIndex]);
                     }
@@ -199,7 +204,7 @@ class Pages extends Controller
     {
         try {
             if (isset($_POST['add'])) {
-                $data = $this->initShoppingCart($_POST['hidden_ID']);
+                $data = $this->initShoppingCart($this->ValidateData($_POST['hidden_ID']));
             }
             $this->view('pages/cartpage', $data);
         } catch (Exception $e) {
@@ -247,7 +252,7 @@ class Pages extends Controller
         try {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mollie = new \Mollie\Api\MollieApiClient();
-                $mollie->setApiKey('test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8');
+                $mollie->setApiKey(MOLLIE_API);
                 $amount = sprintf("%.2f", $_SESSION['totalprice']);
                 $description = $_POST['firstname'] . ' payment';
                 $payment = $mollie->payments->create([
@@ -269,11 +274,8 @@ class Pages extends Controller
                 if ($payment1->isPaid()) {
                     //generatepdf
                     $this->generatePDF();
-
-
-                    //$this->emailCustomer();
                 } else {
-                    echo "error";
+                    echo "payment error";
                 }
                 redirectPayment($payment->getCheckoutUrl(), true, 303);
             }
@@ -289,9 +291,9 @@ class Pages extends Controller
             $pdf = new FPDF();
             $pdf->AddPage();
             $pdf->SetFont('Arial', 'B', 10);
-            define('EURO', chr(128));
 
             //orderId
+            $orderId = $this->orderNumberGen();
             $totalprice = $_SESSION['totalprice'];
             $getFormattedDate = $this->convertDateGmtToString();
             $invoiceDate = $getFormattedDate[1];
@@ -318,7 +320,8 @@ class Pages extends Controller
 
             //$pdf->image("http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/app/controllers/qr.php/qr?code=$data", 160, 10, 20, 20, "png");
 
-
+            $pdf->Cell(100, 10, "Order number: " . $orderId, 1, 0, 'C'); //orderId
+            $pdf->Ln();
             $pdf->Cell(100, 10, "First name: " . $firstname . " " . $lastname, 1, 0, 'C'); //name
             $pdf->Ln();
             $pdf->Cell(100, 10, "Email: " . $email, 1, 0, 'C'); //email
@@ -384,7 +387,7 @@ class Pages extends Controller
             //Recipients
             $email =  $_SESSION["email_address"];
             $mail->setFrom('haarlemfestivalgroup2@gmail.com', "Haarlem Festival");
-            $mail->addAddress($email); //Add a recipient //Name is optional
+            $mail->addAddress($email); //recipient 
 
             $filename = 'haarlem_festival.pdf';
             $mail->addAttachment('../' . $filename);
