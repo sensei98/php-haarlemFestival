@@ -6,14 +6,12 @@ require __DIR__ . '/../../phpmailer/src/SMTP.php';
 require __DIR__ . '/../../phpmailer/src/Exception.php';
 require_once __DIR__ . '/../libraries/fpdf/fpdf.php';
 require __DIR__ . '/../../vendor/autoload.php';
-require __DIR__ . '/../../phpqrcode/qrlib.php';
+require __DIR__ . '/../../vendor/chillerlan/php-qrcode/src/QRCode.php';
 
-QRcode::png($_GET['code']);
-
+use chillerlan\QRCode\QRCode;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
 
 
 class Pages extends Controller
@@ -285,6 +283,7 @@ class Pages extends Controller
     }
 
 
+
     public function generatePDF()
     {
         try {
@@ -312,14 +311,18 @@ class Pages extends Controller
 
 
             $pathToImage = URLROOT . "/public/img/icons/logo.png";
-            QRcode::png('$data', URLROOT . "/public/img/icons/code.png");
 
             $pdf->Image($pathToImage, 10, 10, 200, 0, 'PNG');
-            //$pdf->Image($pathToImage, 60, 120, 90, 0, 'PNG');
-            $data = "Welcome to the haarlem Festival " . $firstname . " " . $lastname;
 
-            //$pdf->image("http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/app/controllers/qr.php/qr?code=$data", 160, 10, 20, 20, "png");
+            //qr code
+            $qr = new QRCode();
+            $filename = APPROOT . '/../public/img/qrCode/qr.png';
+            $url = sprintf('http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/pages'); //link to website
+            $qr->render($url, $filename);
 
+            $pdf->Image($filename, 150, 20);
+
+            //order number
             $pdf->Cell(100, 10, "Order number: " . $orderId, 1, 0, 'C'); //orderId
             $pdf->Ln();
             $pdf->Cell(100, 10, "First name: " . $firstname . " " . $lastname, 1, 0, 'C'); //name
@@ -331,7 +334,7 @@ class Pages extends Controller
             //address of client
             $pdf->Cell(100, 10, "Address: " . $address . ", " . $postcode, 1, 0, 'C'); //address
             $pdf->Ln();
-            //order number
+
             //..
             //phone number
             $pdf->Cell(100, 10, "Phone number: " . $phonenumber, 1, 0, 'C'); //phone number
