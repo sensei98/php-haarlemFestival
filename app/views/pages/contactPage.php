@@ -42,8 +42,6 @@
                         <td><?php echo $value["item_quantity"]; ?></td>
                         <td>&euro;<?php echo $value["item_price"]; ?></td>
                     </tr>
-
-
                 <?php endforeach; ?>
                 <td><span>Total Price: <span class="totalprice-span">&euro;<?php echo $_SESSION["totalprice"] ?></span></span></td>
             </table>

@@ -128,6 +128,7 @@ class Pages extends Controller
     //     $this->view('pdf_qrCode');
     // }
 
+    //function for jazzhomepage exclusively
     public function jazzhomepage()
     {
         $topArtists = $this->JazzModel->getTopArtists();
@@ -135,6 +136,7 @@ class Pages extends Controller
         $this->view('pages/jazzhomepage', $data);
     }
 
+    //function with redirect to jazz tickets page
     public function jazztickets()
     {
         $jazzTickets = $this->JazzModel->getAllJazzTickets();
@@ -142,6 +144,11 @@ class Pages extends Controller
         $this->view('pages/jazztickets', $data);
     }
 
+    /**
+     * function getting jazz artists
+     * @param id - getting artists by id
+     * @return data - returns array of jazz tickets
+     */
     public function getJazzArtistsByID($id)
     {
         $ticket = $this->JazzModel->getJazzArtistsByID($id);
@@ -149,14 +156,15 @@ class Pages extends Controller
         return $data;
     }
 
-
+    //function for generating orderNo
     public function orderNumberGen()
     {
-        $randomNo = rand(0, 100);
+        //format   //HF + year + month + date + random No
+        $randomNo = rand(0, 200); //randomNo between 0 and 200
         $day = date("d");
         $month = date("m");
         $year = date("Y");
-        $stringFormat = "HF" . $year . $month . $day . ($randomNo); //HF + year + month + date + random No
+        $stringFormat = "HF" . $year . $month . $day . ($randomNo);
         return $stringFormat;
     }
     #initializing shopping cart
@@ -164,16 +172,17 @@ class Pages extends Controller
     {
         try {
             if (isset($_SESSION['shopping_cart'])) {
+                //using the ticketID to get ticket info in cart
                 $item_array_ID = array_column($_SESSION['shopping_cart'], "ticketID");
                 if (!in_array($id, $item_array_ID)) {
                     $count = count($_SESSION['shopping_cart']);
                     $data = $this->getAllTicketsToCart($id);
                     $_SESSION['shopping_cart'][$count] = $data;
 
-                    $lastIndex = array_key_last($data);
+                    $lastIndex = array_key_last($data); //getting the last index
                     if ($count >= 6) {
                         echo '<script>alert("No more items can be added")</script>';
-                        unset($_SESSION['shopping_cart'][$lastIndex]);
+                        unset($_SESSION['shopping_cart'][$lastIndex]); //removing lastitem
                     }
                 } else {
                     echo '<script>alert("Item has already been added")</script>';
@@ -188,6 +197,7 @@ class Pages extends Controller
     }
 
     #getting jazz tickets by id to be added to cart
+
     public function getAllTicketsToCart($id)
     {
         $price = $this->ValidateData($_POST['hidden_price']);
@@ -217,7 +227,7 @@ class Pages extends Controller
             if (isset($_POST['delete'])) {
                 foreach ($_SESSION['shopping_cart'] as $keys => $values) {
                     if ($values["ticketID"] == $_POST['delete']) {
-                        unset($_SESSION['shopping_cart'][$keys]); //$keys   
+                        unset($_SESSION['shopping_cart'][$keys]); //array with index   
                         echo '<script>alert("Item has been deleted")</script>';
                     }
                 }
@@ -227,15 +237,21 @@ class Pages extends Controller
         }
         $this->view('pages/cartpage');
     }
+    //redirect to contact page
     public function contactPage()
     {
         $this->view("pages/contactPage");
     }
+    //redirect to confirmation page
     public function confirmation()
     {
         $this->view("pages/confirmation");
     }
-
+    /**
+     * function for data validation
+     * @param data - post request objects
+     * @return data - can be passed in every function for validation
+     */
     public function ValidateData($data)
     {
         $data = trim($data); //removing whitespace and other predefined characters
@@ -244,13 +260,13 @@ class Pages extends Controller
         return $data;
     }
 
-
-    public function payment() //takes in idb
+    //mollie payment function
+    public function payment()
     {
         try {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mollie = new \Mollie\Api\MollieApiClient();
-                $mollie->setApiKey(MOLLIE_API);
+                $mollie->setApiKey(MOLLIE_API); //api key in config.php
                 $amount = sprintf("%.2f", $_SESSION['totalprice']);
                 $description = $_POST['firstname'] . ' payment';
                 $payment = $mollie->payments->create([
@@ -263,13 +279,16 @@ class Pages extends Controller
                     "webhookUrl" => "",
                     // "metadata" => $id
                 ]);
+                //getting payment token
                 $_SESSION['payment_id'] = $payment->id;
+                //getting payment date created
                 $_SESSION['date_created'] = $payment->createdAt;
+                //getting payment expiry daae
                 $_SESSION['due_date'] = $payment->expiresAt;
 
-                $payment1 = $mollie->payments->get($_SESSION['payment_id']);
+                $payments = $mollie->payments->get($_SESSION['payment_id']);
                 $this->generatePDF();
-                if ($payment1->isPaid()) {
+                if ($payments->isPaid()) {
                     //generatepdf
                     $this->generatePDF();
                 } else {
@@ -283,7 +302,7 @@ class Pages extends Controller
     }
 
 
-
+    //function for PDF creation
     public function generatePDF()
     {
         try {
@@ -293,10 +312,15 @@ class Pages extends Controller
 
             //orderId
             $orderId = $this->orderNumberGen();
+            //toralprice
             $totalprice = $_SESSION['totalprice'];
+            //formatted date
             $getFormattedDate = $this->convertDateGmtToString();
+            //invoice date
             $invoiceDate = $getFormattedDate[1];
+            //payment due date
             $paymentDueDate = $getFormattedDate[0];
+            //email address
             $_SESSION["email_address"] = $this->ValidateData($_POST["email"]);
             $firstname = $this->ValidateData($_POST["first_name"]);
             $lastname = $this->ValidateData($_POST["last_name"]);
@@ -309,59 +333,61 @@ class Pages extends Controller
             $phonenumber = $this->ValidateData($_POST["phonenumber"]);
             $priceWithVAT = $this->calculateVat();
 
-
-            $pathToImage = URLROOT . "/public/img/icons/logo.png";
-
-            $pdf->Image($pathToImage, 10, 10, 200, 0, 'PNG');
+            //path to Logo
+            $pathToLogo = URLROOT . "/public/img/icons/logo.png";
+            $pdf->Image($pathToLogo, 10, 10, 200, 0, 'PNG'); //placing image into pdf
 
             //qr code
             $qr = new QRCode();
             $filename = APPROOT . '/../public/img/qrCode/qr.png';
             $url = sprintf('http://localhost:8080/php/SchoolStuff/HaarlemFestival-Group2-Merging/pages'); //link to website
             $qr->render($url, $filename);
-
             $pdf->Image($filename, 150, 20);
 
             //order number
-            $pdf->Cell(100, 10, "Order number: " . $orderId, 1, 0, 'C'); //orderId
+            $pdf->Cell(100, 10, "Order number: " . $orderId, 1, 0, 'C');
             $pdf->Ln();
-            $pdf->Cell(100, 10, "First name: " . $firstname . " " . $lastname, 1, 0, 'C'); //name
+            //customer name
+            $pdf->Cell(100, 10, "First name: " . $firstname . " " . $lastname, 1, 0, 'C');
             $pdf->Ln();
-            $pdf->Cell(100, 10, "Email: " . $email, 1, 0, 'C'); //email
+            //customer email
+            $pdf->Cell(100, 10, "Email: " . $email, 1, 0, 'C');
             $pdf->Ln();
-            $pdf->Cell(100, 10, "Date: " . $day . "/" . $month . "/" . $year, 1, 0, 'C'); //date
+
+            //dob
+            $pdf->Cell(100, 10, "Date of birth: " . $day . "/" . $month . "/" . $year, 1, 0, 'C');
             $pdf->Ln();
             //address of client
             $pdf->Cell(100, 10, "Address: " . $address . ", " . $postcode, 1, 0, 'C'); //address
             $pdf->Ln();
             //phone number
-            $pdf->Cell(100, 10, "Phone number: " . $phonenumber, 1, 0, 'C'); //phone number
+            $pdf->Cell(100, 10, "Phone number: " . $phonenumber, 1, 0, 'C');
             $pdf->Ln();
             //total amount
-            $pdf->Cell(100, 10, "Total: " . EURO . $totalprice, 1, 0, 'C'); //totalprice 
+            $pdf->Cell(100, 10, "Total: " . EURO . $totalprice, 1, 0, 'C');
             $pdf->Ln();
             //value added tax
-            $pdf->Cell(100, 10, "Total price with VAT(21%): " . EURO . $priceWithVAT, 1, 0, 'C'); //total with VAT
+            $pdf->Cell(100, 10, "Total price with VAT(21%): " . EURO . $priceWithVAT, 1, 0, 'C');
             $pdf->Ln();
             //invoice date
-            $pdf->Cell(100, 10, "Invoice Date: "  . $invoiceDate, 1, 0, 'C'); //invoice date 
+            $pdf->Cell(100, 10, "Invoice Date: "  . $invoiceDate, 1, 0, 'C');
             $pdf->Ln();
             //payment due date
-            $pdf->Cell(100, 10, "Payment Due Date: "  . $paymentDueDate, 1, 0, 'C'); //payment due date 
+            $pdf->Cell(100, 10, "Payment Due Date: "  . $paymentDueDate, 1, 0, 'C');
             $pdf->Ln();
 
 
-            //customer details
             foreach ($_SESSION["shopping_cart"] as $item) {
-
-                $pdf->Cell(100, 10, "ARTIST: " . $item["item_name"], 1, 0, 'C'); //artist
+                //cart item name
+                $pdf->Cell(100, 10, "ARTIST: " . $item["item_name"], 1, 0, 'C');
                 $pdf->Ln();
-                $pdf->Cell(100, 10, "EVENT LOCATION: " . $item["item_location"], 1, 0, 'C'); //location
+                //cart item location
+                $pdf->Cell(100, 10, "EVENT LOCATION: " . $item["item_location"], 1, 0, 'C');
                 $pdf->Ln();
-                $pdf->Cell(100, 10, "PRICE PER PERSON: " . EURO .  $item["item_price"], 1, 0, 'C'); //price
+                //cart item price
+                $pdf->Cell(100, 10, "PRICE PER PERSON: " . EURO .  $item["item_price"], 1, 0, 'C');
                 $pdf->Ln();
             }
-
 
             $filename = "haarlem_festival.pdf";
             $pdf->Output('F', '../' . $filename, true);
@@ -370,9 +396,9 @@ class Pages extends Controller
         }
     }
 
+    //function for emailing
     public function emailCustomer()
     {
-
         try {
             $mail = new PHPMailer(true);
             //$mail->SMTPDebug = 3; //Enable verbose debug output
@@ -386,7 +412,7 @@ class Pages extends Controller
 
             $email =  $_SESSION["email_address"];
             $mail->setFrom('haarlemfestivalgroup2@gmail.com', "Haarlem Festival");
-            $mail->addAddress($email); //recipient 
+            $mail->addAddress($email); //recipient email
 
             $filename = 'haarlem_festival.pdf';
             $mail->addAttachment('../' . $filename);
@@ -399,13 +425,13 @@ class Pages extends Controller
 
 
             $mail->send();
-            // echo 'Message has been sent';
-            $this->view("pages/confirmation");
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
         $this->view("pages/confirmation");
     }
+
+    //function for VAT calculation
     public function calculateVat()
     {
         $vat = 0.21; //VAT 21%
@@ -413,6 +439,12 @@ class Pages extends Controller
         $priceWithVAT = $_SESSION["totalprice"] + $totalVAT;
         return $priceWithVAT;
     }
+
+    /**
+     * function for date conversion
+     * @return dates - payment date created and payment due date
+     */
+
     public function convertDateGmtToString()
     {
         $due_date = $_SESSION['due_date'];

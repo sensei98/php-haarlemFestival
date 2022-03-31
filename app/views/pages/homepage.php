@@ -1,13 +1,7 @@
 <?php
 include APPROOT . '/views/includes/head.php';
 ?>
-<?php
 
-// if (!isset($_SESSION)) {
-//     session_start();
-// }
-
-?>
 
 <body>
 
@@ -320,11 +314,6 @@ include APPROOT . '/views/includes/head.php';
                 <span>The Haarlem Festival</span>
             </section>
         </section>
-
-        <?php //include APPROOT . '/views/inc/navbar.php'; 
-        ?>
-        <?php //require APPROOT . '/views/inc/dynamic.php'; 
-        ?>
 
     </article>
     <footer>

@@ -27,8 +27,6 @@
 
     if (!empty($_SESSION['shopping_cart'])) {
         $total = 0;
-
-
         foreach ($_SESSION['shopping_cart'] as $value) :
     ?>
             <section class="container">
@@ -36,7 +34,6 @@
 
                     <section class="basket-container">
                         <article class="basket-item1">
-
                             <span><?php echo $value['item_name']; ?></span>
                         </article>
                         <form method="post" action="<?php echo URLROOT; ?>/cartController/RemoveFromCart/<?php echo $value['ticketID'] ?>">
@@ -45,12 +42,9 @@
                                     <img src=<?php echo URLROOT . '/public/img/icons/delete.png' ?>>
                                 </a>
                             </button>
-
                         </form>
                         <article class="quantity-float">Qty&colon; <?php echo $value['item_quantity'] ?></article>
-
                         <article class="item-price">&euro;<?php echo $value['item_quantity'] * $value['item_price']; ?></article>
-
                     </section>
                 </section>
                 <?php
@@ -64,7 +58,6 @@
             </section>
             <section class='btn-continue-container'><a class='btn-continue' href='<?php echo URLROOT; ?>/pages/index'>Continue shopping?</a></section>
             <section class='btn-continue-order'><a class='btn-order' href='<?php echo URLROOT; ?>/pages/contactPage'>To order</a></section>
-
 
         <?php } else { ?>
             <section class='emptyLabel'>Shopping cart is empty</section>
